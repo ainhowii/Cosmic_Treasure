@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TilePrueba2_autoslice_2
+  m_Name: TilePrueba4_autoslice_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1049285518, guid: 6d81aa9eeae45f9489859b1ac6cd9806, type: 3}
+  m_Sprite: {fileID: 444501267, guid: e85df51666bc1d64b83a63d4e60361ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
