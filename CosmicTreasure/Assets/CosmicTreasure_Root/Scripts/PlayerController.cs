@@ -6,110 +6,45 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D body;
-
-    public SpriteRenderer spriteRenderer;
-
-    public List<Sprite> nSprites;
-    public List<Sprite> neSprites;
-    public List<Sprite> eSprites;
-    public List<Sprite> seSprites;
-    public List<Sprite> sSprites;
-
-    public float walkSpeed;
-
-    public float frameRate;
-
-    float idleTime;
-
-    Vector2 direction;
-
-    private void Start()
-    {
-        
-    }
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private float _speed = 5;
+    [SerializeField] private float _turnSpeed = 360;
+    private Vector3 _input;
 
     private void Update()
     {
-        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-
-        body.velocity = direction * walkSpeed;
-
-        HandleSpriteFlip();
-        SetSprite();
+        GatherInput();
+        Look();
     }
 
-    void SetSprite()
+    private void FixedUpdate()
     {
-        List<Sprite> directionSprites = GetSpriteDirection();
-
-        if (directionSprites != null)
-        { //holding a direction
-
-            float playTime = Time.time - idleTime;
-            int totalFrames = (int)(playTime * frameRate);
-            int frame = totalFrames % directionSprites.Count;
-
-            spriteRenderer.sprite = directionSprites[frame];
-        }
-        else
-        {
-            idleTime = Time.time;
-        }
-
+        Move();
     }
 
-    void HandleSpriteFlip()
+    void GatherInput()
     {
-        if (!spriteRenderer.flipX && direction.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (spriteRenderer.flipX && direction.x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
+        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
-    List<Sprite> GetSpriteDirection()
+    void Look()
     {
-        List<Sprite> selectedSprites = null;
-
-        if (direction.y > 0) //North
+        if (_input != Vector3.zero)
         {
-            if (Mathf.Abs(direction.x) > 0) //east or west
-            {
-                selectedSprites = neSprites;
-            }
-            else //neutral X
-            {
-                selectedSprites = nSprites;
-            }
-        }
-        else if (direction.y < 0) //South
-        {
-            if (Mathf.Abs(direction.x) > 0) //east or west
-            {
-                selectedSprites = seSprites;
-            }
-            else
-            {
-                selectedSprites = sSprites;
-            }
-        }
-        else //neutral
-        {
-            if (Mathf.Abs(direction.x) > 0) //east or west
-            {
-                selectedSprites = eSprites;
-            }
-        }
+            var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
 
-        return selectedSprites;
+            var skewedInput = matrix.MultiplyPoint3x4(_input);
 
+            var relative = (transform.position + _input) - transform.position;
+            var rot = Quaternion.LookRotation(relative, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
+        }
+        
     }
 
-   
-
+    void Move()
+    {
+        _rb.MovePosition(transform.position + (transform.forward * _input.magnitude) * _speed * Time.deltaTime);
+    }
 }
