@@ -29,7 +29,7 @@ public class RayCast : MonoBehaviour
             Debug.Log("Did Hit");
             //sfx.volume = soundVolume;
             //sfx.Play();
-            Vector3 vv = hit.point;
+
         }
         else
         {
