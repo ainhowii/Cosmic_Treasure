@@ -10,7 +10,7 @@ public class EnemyFollow : MonoBehaviour
     public float fireRate = 1f;  //PARA QUE NO TE TIRE UNA RAFAGA DE TIROS
     private bool playerPositionSaved;  //Guardar posición del jugador
     private Vector2 playerPosOnShoot;
-    private float nextFireTime;
+    private float atkCD;  //CoolDown
     public GameObject bullet;
     [SerializeField] GameObject bulletParent;
     private Transform player;
@@ -30,26 +30,29 @@ public class EnemyFollow : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
-        else if (distanceFromPlayer <= shootingRange && nextFireTime <Time.time)
+        else if (distanceFromPlayer <= shootingRange)
         {
-            if (playerPositionSaved == false)
+            if (atkCD <= 0)
             {
-                Debug.Log("Entra a if");
-                playerPosOnShoot = player.position;
-                Debug.Log("PlayerPosOnShoot" + playerPosOnShoot);
-                playerPositionSaved = true;
+                atkCD = fireRate;
+                GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+                Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
+                Vector2 difference = newBullet.transform.position - player.position;
+                difference.normalized;
 
-                Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
-
-                Invoke("BoolReset", 1);
             }
         }
        
     }
 
-    private void BoolReset()
+    private void FixedUpdate()
     {
-        playerPositionSaved = false;
+        if (atkCD > 0)
+        {
+            atkCD -= Time.deltaTime;
+
+        }
+        
     }
 
     private void OnDrawGizmosSelected()
