@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyFollow : MonoBehaviour
 {
+    //public AIPath aIPath;
+
+    Vector2 direction;
+
+    AIPath path;
+
+    [Header ("Enemy Attributes")]
     public float speed;
     public float lineOfSite;  //TE PERSIGUE MIENTRAS ESTÉS EN ESTE RANGO
     public float shootingRange;  //EN ESTE RANGO TE DEJA DE PERSEGUIR Y TE DISPARA
@@ -25,7 +33,10 @@ public class EnemyFollow : MonoBehaviour
 
     private void Update()
     {
+        //faceVelocity();
+
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > shootingRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
@@ -38,7 +49,7 @@ public class EnemyFollow : MonoBehaviour
                 GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
                 Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
                 Vector2 difference = newBullet.transform.position - player.position;
-                difference.normalized;
+                //difference.normalized;
 
             }
         }
@@ -53,6 +64,13 @@ public class EnemyFollow : MonoBehaviour
 
         }
         
+    }
+
+    void faceVelocity()
+    {
+        //direction = aIPath.desiredVelocity;
+
+        transform.right = direction;
     }
 
     private void OnDrawGizmosSelected()
