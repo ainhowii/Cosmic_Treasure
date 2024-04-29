@@ -641,53 +641,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98ab65095823e82468c68279563231fe, type: 3}
---- !u!1 &1001648583
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1001648584}
-  - component: {fileID: 1001648585}
-  m_Layer: 0
-  m_Name: Ray1 (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1001648584
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001648583}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.68, y: 2.87, z: 0.09906552}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1952544133}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1001648585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001648583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18156278a8e39794d8eb0a95033c309b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  objectVector: {x: 0, y: 0}
-  pointToPlayer: {x: 0, y: 0}
 --- !u!1001 &1129248942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1485,11 +1438,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!4 &1952544133 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5896057929973270905, guid: 98ab65095823e82468c68279563231fe, type: 3}
-  m_PrefabInstance: {fileID: 4298201892410932784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4298201892410932784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1716,9 +1664,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5896057929973270905, guid: 98ab65095823e82468c68279563231fe, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1001648584}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98ab65095823e82468c68279563231fe, type: 3}
