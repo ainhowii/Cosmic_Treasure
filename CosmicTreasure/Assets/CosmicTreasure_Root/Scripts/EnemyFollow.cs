@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class EnemyFollow : MonoBehaviour
 {
     //public AIPath aIPath;
 
     Vector2 direction;
-
-    AIPath path;
 
     [Header ("Enemy Attributes")]
     public float speed;
@@ -48,8 +45,7 @@ public class EnemyFollow : MonoBehaviour
                 atkCD = fireRate;
                 GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
                 Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
-                Vector2 difference = newBullet.transform.position - player.position;
-                //difference.normalized;
+               
 
             }
         }
