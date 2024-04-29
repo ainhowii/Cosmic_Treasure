@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
+    //public AIPath aIPath;
+
+    Vector2 direction;
+
+    [Header ("Enemy Attributes")]
     public float speed;
     public float lineOfSite;  //TE PERSIGUE MIENTRAS ESTÉS EN ESTE RANGO
     public float shootingRange;  //EN ESTE RANGO TE DEJA DE PERSEGUIR Y TE DISPARA
     public float fireRate = 1f;  //PARA QUE NO TE TIRE UNA RAFAGA DE TIROS
     private bool playerPositionSaved;  //Guardar posición del jugador
     private Vector2 playerPosOnShoot;
-    private float nextFireTime;
+    private float atkCD;  //CoolDown
     public GameObject bullet;
     [SerializeField] GameObject bulletParent;
     private Transform player;
@@ -25,31 +30,43 @@ public class EnemyFollow : MonoBehaviour
 
     private void Update()
     {
+        //faceVelocity();
+
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+
         if (distanceFromPlayer < lineOfSite && distanceFromPlayer > shootingRange)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
-        else if (distanceFromPlayer <= shootingRange && nextFireTime <Time.time)
+        else if (distanceFromPlayer <= shootingRange)
         {
-            if (playerPositionSaved == false)
+            if (atkCD <= 0)
             {
-                Debug.Log("Entra a if");
-                playerPosOnShoot = player.position;
-                Debug.Log("PlayerPosOnShoot" + playerPosOnShoot);
-                playerPositionSaved = true;
+                atkCD = fireRate;
+                GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+                Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
+               
 
-                Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
-
-                Invoke("BoolReset", 1);
             }
         }
        
     }
 
-    private void BoolReset()
+    private void FixedUpdate()
     {
-        playerPositionSaved = false;
+        if (atkCD > 0)
+        {
+            atkCD -= Time.deltaTime;
+
+        }
+        
+    }
+
+    void faceVelocity()
+    {
+        //direction = aIPath.desiredVelocity;
+
+        transform.right = direction;
     }
 
     private void OnDrawGizmosSelected()
