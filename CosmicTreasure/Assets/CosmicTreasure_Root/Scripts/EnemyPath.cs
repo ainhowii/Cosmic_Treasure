@@ -7,7 +7,22 @@ public class EnemyPath : MonoBehaviour
 {
     [SerializeField] Transform target;
 
-    NavMeshAgent agent;
+    [Header("Enemy Attributes")]
+    public float lineOfSite;  //TE PERSIGUE MIENTRAS ESTÉS EN ESTE RANGO
+    public float shootingRange;  //EN ESTE RANGO TE DEJA DE PERSEGUIR Y TE DISPARA
+    public float fireRate = 1f;  //PARA QUE NO TE TIRE UNA RAFAGA DE TIROS
+    private float atkCD;  //CoolDown
+    public GameObject bullet;
+    [SerializeField] GameObject bulletParent;
+    public Transform player;
+
+    private NavMeshAgent navSpeed;   //ACCEDER AL SPEED DEL NAVMESHAGENT
+
+    [Header("States Enemy")]
+    private bool isFollowing;
+    private bool isShooting;
+
+    NavMeshAgent agent;     
 
     private void Start()
     {
@@ -18,6 +33,46 @@ public class EnemyPath : MonoBehaviour
 
     private void Update()
     {
-        agent.SetDestination(target.position);
+        float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+
+        if (distanceFromPlayer < lineOfSite && distanceFromPlayer > shootingRange)
+        {
+            isFollowing = true;
+            agent.SetDestination(target.position);
+            //transform.position = Vector2.MoveTowards(this.transform.position, player.position, navSpeed.speed * Time.deltaTime);
+        }
+        else if (distanceFromPlayer <= shootingRange)
+        { 
+            if (atkCD <= 0)
+            {
+                isShooting = true;
+                atkCD = fireRate;
+                GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+                Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
+
+
+            }
+            
+        
+        }
+
+        //agent.SetDestination(target.position);
+    }
+
+    private void FixedUpdate()
+    {
+        if (atkCD > 0)
+        {
+            atkCD -= Time.deltaTime;
+
+        }
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, lineOfSite);
+        Gizmos.DrawWireSphere(transform.position, shootingRange);
     }
 }
