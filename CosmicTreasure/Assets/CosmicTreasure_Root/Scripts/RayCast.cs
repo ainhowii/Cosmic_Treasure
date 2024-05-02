@@ -8,7 +8,7 @@ public class RayCast : MonoBehaviour
 
     [SerializeField] float distance = 10f;
 
-    //[SerializeField] float soundVolume = 0.5f;
+    [SerializeField] float soundVolume = 0.5f;
 
     RaycastHit2D hit;
 
