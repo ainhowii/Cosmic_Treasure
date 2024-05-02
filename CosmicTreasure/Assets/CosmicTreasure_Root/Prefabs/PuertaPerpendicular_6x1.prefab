@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 41fa83d3617cca541aec567eb6493dd8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf5a125ad58b3fc4b86485bcf097682e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,9 +120,9 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 8.65, y: 0.56, z: 5.2599998, w: 0.02}
-    pivot: {x: 0.6955785, y: 0.115}
-    oldSize: {x: 19.2, y: 10.8}
+    border: {x: 0.04, y: 0, z: 0.02, w: 0}
+    pivot: {x: 0.77, y: 0}
+    oldSize: {x: 6.12, y: 9.31}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,14 +130,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0068074167, y: 0.51715493}
-      - {x: 0.6248926, y: 0.81799984}
-      - {x: -0.93920064, y: 1.5537492}
-      - {x: -1.5766066, y: 1.2997136}
-    - - {x: -3.6222498, y: 2.8194335}
-      - {x: -4.2308717, y: 3.0911646}
-      - {x: -4.726108, y: 2.8963752}
-      - {x: -4.2639227, y: 2.6590414}
+    - - {x: -1.5412614, y: 0.78311485}
+      - {x: 0.067800134, y: 0.033162236}
+      - {x: 0.630929, y: 0.30363944}
+      - {x: 0.6248926, y: 0.6613101}
+      - {x: -0.93920064, y: 1.4754043}
+      - {x: -1.5734447, y: 1.2049443}
+    - - {x: -4.090461, y: 2.0716407}
+      - {x: -3.326824, y: 2.366301}
+      - {x: -3.289284, y: 2.7410886}
+      - {x: -3.97625, y: 3.0128202}
+      - {x: -4.7652807, y: 2.7592714}
+      - {x: -4.714407, y: 2.2869034}
   m_UseDelaunayMesh: 0
 --- !u!1 &7312250904994485618
 GameObject:
