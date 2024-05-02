@@ -65,6 +65,10 @@ public class EnemyPath : MonoBehaviour
                 Debug.Log("SEEN Player!");
                 Debug.DrawRay(fovPoint.position, dir, Color.red);
                 isShooting = true;
+                Vector3 vectorToTarget = player.transform.position - transform.position;
+                float anglee = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
                 atkCD = fireRate;
                 GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
                 Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
