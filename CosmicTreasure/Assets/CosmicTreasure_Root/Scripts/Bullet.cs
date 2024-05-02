@@ -22,6 +22,6 @@ public class Bullet : MonoBehaviour
     {
         
         
-        transform.position = Vector2.MoveTowards(transform.position, playerPosShoot*10, speed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, playerPosShoot, speed * Time.deltaTime);
     }
 }
