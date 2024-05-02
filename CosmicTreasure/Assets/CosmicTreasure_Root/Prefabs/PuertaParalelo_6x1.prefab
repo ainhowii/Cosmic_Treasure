@@ -309,3 +309,4 @@ MonoBehaviour:
   objectVector2: {x: 0, y: 0}
   pointToPlayer: {x: 0, y: 0}
   playerDistance: 0
+  maxDistance: 6

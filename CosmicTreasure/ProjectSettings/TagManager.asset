@@ -41,12 +41,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 2
+  - name: Ground
+    uniqueID: 1128400613
+    locked: 0
+  - name: BackLayer2
+    uniqueID: 3287435975
+    locked: 0
+  - name: BackLayer1
     uniqueID: 1906066853
+    locked: 0
+  - name: PickUp
+    uniqueID: 243752403
     locked: 0
   - name: Player
     uniqueID: 1518159415
     locked: 0
-  - name: New Layer 1
+  - name: FX
+    uniqueID: 3052274041
+    locked: 0
+  - name: FrontLayer1
     uniqueID: 2895071195
+    locked: 0
+  - name: FrontLayer2
+    uniqueID: 184783523
+    locked: 0
+  - name: Roof
+    uniqueID: 3432701791
     locked: 0
