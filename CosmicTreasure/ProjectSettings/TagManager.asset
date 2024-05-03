@@ -56,6 +56,9 @@ TagManager:
   - name: BackFX
     uniqueID: 1883618031
     locked: 0
+  - name: Pickup
+    uniqueID: 1673112063
+    locked: 0
   - name: Enemy
     uniqueID: 4259673797
     locked: 0
