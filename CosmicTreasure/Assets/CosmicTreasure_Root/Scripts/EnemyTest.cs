@@ -22,6 +22,13 @@ public class EnemyTest : MonoBehaviour
     public Transform fovPoint;
     public float range = 8;
 
+    [Header("Patrol")]
+    [SerializeField] private float speedMovement;
+    [SerializeField] private Transform[] movementPoints;
+    [SerializeField] private float minimumDistance;
+    private int randomNumber;
+    private SpriteRenderer spriteRenderer;
+
     [Header("States Enemy")]
     private bool isFollowing;
     private bool isShooting;
@@ -34,29 +41,38 @@ public class EnemyTest : MonoBehaviour
 
     private void Start()
     {
+        //PATHFINDING
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+
+        //PATROL
+        randomNumber = Random.Range(0, movementPoints.Length);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Rotate();
     }
 
     private void Update()
     {
+        transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);
+
         float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);
         Vector2 dir = target.position - transform.position;
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
 
-       // agent.SetDestination(target.position);
+        if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minimumDistance)  //Patrol Estandar
+        {
+            randomNumber = Random.Range(0, movementPoints.Length);
+            Rotate();
+        }
 
         if (angle < fovAngle / 2)
         {
             if (r.collider.CompareTag("Player"))
             {
                 isFollowing = true;
-                Vector3 vectorToTarget = player.transform.position - transform.position;
-                float anglee = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
-                Quaternion q = Quaternion.AngleAxis(anglee, Vector3.forward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
+                LookAt();
                 agent.SetDestination(target.position);
                 Debug.Log("SEEN PLAYER!");
                 Debug.DrawRay(fovPoint.position, dir, Color.red);
@@ -65,10 +81,7 @@ public class EnemyTest : MonoBehaviour
             {
                 Debug.Log("ENTRA TIRO");
                 isShooting = true;
-                Vector3 vectorToTarget = player.transform.position - transform.position;
-                float anglee = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
-                Quaternion q = Quaternion.AngleAxis(anglee, Vector3.forward);
-                transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
+                LookAt();
                 atkCD = fireRate;
                 GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
                 Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
@@ -76,9 +89,30 @@ public class EnemyTest : MonoBehaviour
             }
             else
             {
+                transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);
                 Debug.Log("We dont seen");
             }
         }
+    }
+
+    private void Rotate()
+    {
+        if (transform.position.x < movementPoints[randomNumber].position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+
+    private void LookAt()
+    {
+        Vector3 vectorToTarget = player.transform.position - transform.position;
+        float anglee = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
+        Quaternion q = Quaternion.AngleAxis(anglee, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
     }
 
     private void FixedUpdate()
