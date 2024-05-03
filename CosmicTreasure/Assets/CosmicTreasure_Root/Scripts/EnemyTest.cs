@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyTest : MonoBehaviour
 {
     NavMeshAgent agent;
+    public enum EnemyState { patroling, chasing, attacking}
+    Vector2 dir;
 
     [Header("Enemy Attributes")]
     public float fireRate = 1f;  //PARA QUE NO TE TIRE UNA RAFAGA DE TIROS
@@ -34,6 +36,7 @@ public class EnemyTest : MonoBehaviour
     public Transform centrePoint;
 
     [Header("States Enemy")]
+    [SerializeField] EnemyState actualState;
     private bool isFollowing;
     private bool isShooting;
 
@@ -45,6 +48,8 @@ public class EnemyTest : MonoBehaviour
 
     private void Start()
     {
+        actualState = EnemyState.patroling;
+
         //PATHFINDING
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -53,77 +58,104 @@ public class EnemyTest : MonoBehaviour
         //PATROL
         randomNumber = Random.Range(0, movementPoints.Length);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Rotate();
     }
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);
+        if (!isFollowing && !isShooting) { actualState = EnemyState.patroling; }
+        if (isFollowing && !isShooting) { actualState = EnemyState.chasing; }
+        if (isFollowing && isShooting) { actualState = EnemyState.attacking; }
 
-        float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);
-        Vector2 dir = target.position - transform.position;
+        //transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);  //SE MUEVE RANDOM A LOS PUNTOS
+        Patrol();
+
+        float distanceFromPlayer = Vector2.Distance(transform.position, playerD.position);
+        dir = target.position - transform.position;
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
 
+        /*
         if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minimumDistance)  //Patrol Estandar
         {
             randomNumber = Random.Range(0, movementPoints.Length);
             Rotate();
+        }
+        */
+
+        if (distanceFromPlayer < 5)
+        {
+            Debug.Log("Estoy cerca...");
         }
 
         if (angle < fovAngle / 2)
         {
             if (r.collider.CompareTag("Player"))
             {
-                isFollowing = true;
-                LookAt();
-                agent.SetDestination(target.position);
-                Debug.Log("SEEN PLAYER!");
-                Debug.DrawRay(fovPoint.position, dir, Color.red);
+                actualState = EnemyState.chasing;
+                ChasePlayer();
             }
-            else if (r.collider.CompareTag("Player") && distanceFromPlayer < range - 4)         //FALTA CORREGIR
+            else if (r.collider.CompareTag("Player") && distanceFromPlayer < 5)         //FALTA CORREGIR
             {
-                Debug.Log("ENTRA TIRO");
-                isShooting = true;
-                LookAt();
-                atkCD = fireRate;
-                GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
-                Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
-                
+                EnemyAttack();
+
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);
+                Patrol();
                 Debug.Log("We dont seen");
             }
         }
-        if (isFollowing == false)
+    }
+
+    void EnemyStateManagement()
+    {
+        switch (actualState)
         {
-            isFollowing = false;
-            Searching();
+            case EnemyState.patroling:
+                Patrol();
+                    break;
+                
+            case EnemyState.chasing:
+                ChasePlayer();
+                break;
+                
+            case EnemyState.attacking:
+                EnemyAttack();
+                break;
+                
+        }
+            
+    }
+
+    private void Patrol()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);  //SE MUEVE RANDOM A LOS PUNTOS
+        LookAt(movementPoints[randomNumber].transform);
+
+        if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minimumDistance)  //Patrol Estandar
+        {
+            randomNumber = Random.Range(0, movementPoints.Length);
+            
         }
     }
 
-    private void Searching()  //ESTADO DE BUSQUEDA
+    void ChasePlayer()
     {
-        isFollowing = false;
-        bool RandomPoint(Vector3 center, float range, out Vector3 result)
-        {
+        isFollowing = true;
+        LookAt(player.transform);
+        agent.SetDestination(target.position);
+        Debug.Log("SEEN PLAYER!");
+        Debug.DrawRay(fovPoint.position, dir, Color.red);
+    }
 
-            Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
-            NavMeshHit hit;
-
-            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
-            {
-                //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-                //or add a for loop like in the documentation
-                result = hit.position;
-                return true;
-            }
-
-            result = Vector3.zero;
-            return false;
-        }
+    void EnemyAttack()
+    {
+        Debug.Log("ENTRA TIRO");
+        isShooting = true;
+        LookAt(player.transform);
+        atkCD = fireRate;
+        GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+        Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
     }
 
     private void Rotate()
@@ -138,9 +170,9 @@ public class EnemyTest : MonoBehaviour
         }
     }
 
-    private void LookAt()
+    private void LookAt(Transform target)
     {
-        Vector3 vectorToTarget = player.transform.position - transform.position;
+        Vector3 vectorToTarget = target.transform.position - transform.position;
         float anglee = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
         Quaternion q = Quaternion.AngleAxis(anglee, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
