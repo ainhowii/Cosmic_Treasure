@@ -14,6 +14,7 @@ public class EnemyTest : MonoBehaviour
     private float atkCD;  //CoolDown
     public GameObject bullet;
     [SerializeField] GameObject bulletParent;
+    [SerializeField] float attackDistance;
 
     [Header("Rotation Fov")]
     public float speedRotation;
@@ -36,8 +37,8 @@ public class EnemyTest : MonoBehaviour
     public Transform centrePoint;
 
     [Header("States Enemy")]
-    [SerializeField] EnemyState actualState;
-    private bool isFollowing;
+    [SerializeField] EnemyState currentState;
+    private bool isChasing;
     private bool isShooting;
 
     public GameObject player;
@@ -48,7 +49,7 @@ public class EnemyTest : MonoBehaviour
 
     private void Start()
     {
-        actualState = EnemyState.patroling;
+        currentState = EnemyState.patroling;
 
         //PATHFINDING
         agent = GetComponent<NavMeshAgent>();
@@ -62,14 +63,17 @@ public class EnemyTest : MonoBehaviour
 
     private void Update()
     {
-        if (!isFollowing && !isShooting) { actualState = EnemyState.patroling; }
-        if (isFollowing && !isShooting) { actualState = EnemyState.chasing; }
-        if (isFollowing && isShooting) { actualState = EnemyState.attacking; }
+        
+        if (!isChasing && !isShooting) { currentState = EnemyState.patroling; }
+        if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
+        if (isChasing && isShooting) { currentState = EnemyState.attacking; }
+
+        EnemyStateManagement();
 
         //transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);  //SE MUEVE RANDOM A LOS PUNTOS
-        Patrol();
 
-        float distanceFromPlayer = Vector2.Distance(transform.position, playerD.position);
+
+        float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);
         dir = target.position - transform.position;
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
@@ -91,25 +95,31 @@ public class EnemyTest : MonoBehaviour
         {
             if (r.collider.CompareTag("Player"))
             {
-                actualState = EnemyState.chasing;
-                ChasePlayer();
-            }
-            else if (r.collider.CompareTag("Player") && distanceFromPlayer < 5)         //FALTA CORREGIR
-            {
-                EnemyAttack();
-
+                if (distanceFromPlayer > attackDistance)
+                {
+                    isChasing = true;
+                    Debug.Log("Detecto al player");
+                }
+                else
+                {
+                    isShooting = true;
+                    Debug.Log("Estoy atacando");
+                }
+                
             }
             else
             {
-                Patrol();
+                isChasing = false;
+                isShooting = false;
                 Debug.Log("We dont seen");
             }
         }
+        
     }
 
     void EnemyStateManagement()
     {
-        switch (actualState)
+        switch (currentState)
         {
             case EnemyState.patroling:
                 Patrol();
@@ -129,6 +139,7 @@ public class EnemyTest : MonoBehaviour
 
     private void Patrol()
     {
+        agent.SetDestination(transform.position);
         transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);  //SE MUEVE RANDOM A LOS PUNTOS
         LookAt(movementPoints[randomNumber].transform);
 
@@ -141,7 +152,7 @@ public class EnemyTest : MonoBehaviour
 
     void ChasePlayer()
     {
-        isFollowing = true;
+        
         LookAt(player.transform);
         agent.SetDestination(target.position);
         Debug.Log("SEEN PLAYER!");
@@ -150,8 +161,8 @@ public class EnemyTest : MonoBehaviour
 
     void EnemyAttack()
     {
+        agent.SetDestination(transform.position);
         Debug.Log("ENTRA TIRO");
-        isShooting = true;
         LookAt(player.transform);
         atkCD = fireRate;
         GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);

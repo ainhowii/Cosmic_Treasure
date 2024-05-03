@@ -2546,6 +2546,7 @@ MonoBehaviour:
   fireRate: 1
   bullet: {fileID: 7265355007015163609, guid: 3dd63978d2379824e8e4189cea5d1cac, type: 3}
   bulletParent: {fileID: 1394780106}
+  attackDistance: 2
   speedRotation: 20
   rotationModifier: 90
   fovAngle: 90
@@ -2560,7 +2561,7 @@ MonoBehaviour:
   minimumDistance: 0.2
   radius: 0
   centrePoint: {fileID: 0}
-  actualState: 0
+  currentState: 0
   player: {fileID: 2116383812}
   playerD: {fileID: 486013164}
   target: {fileID: 486013164}
@@ -3613,11 +3614,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.93
+      value: 6.34
       objectReference: {fileID: 0}
     - target: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.68
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: m_LocalPosition.z
