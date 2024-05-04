@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyTest : MonoBehaviour
 {
-    NavMeshAgent agent;
+    //CODEAR: ARREGLAR EL RANDOM PATROL, QUE DISPARE BIEN, QUE ALERTE A SUS COMPAÑEROS
+
+    public NavMeshAgent agent;
     public enum EnemyState { patroling, chasing, attacking}
     Vector2 dir;
 
@@ -70,21 +72,13 @@ public class EnemyTest : MonoBehaviour
 
         EnemyStateManagement();
 
-        //transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);  //SE MUEVE RANDOM A LOS PUNTOS
+        float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);  //Distancia con el Player
 
-
-        float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);
+        //RAYCAST
         dir = target.position - transform.position;
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
 
-        /*
-        if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minimumDistance)  //Patrol Estandar
-        {
-            randomNumber = Random.Range(0, movementPoints.Length);
-            Rotate();
-        }
-        */
 
         if (distanceFromPlayer < 5)
         {
@@ -113,8 +107,25 @@ public class EnemyTest : MonoBehaviour
                 isShooting = false;
                 Debug.Log("We dont seen");
             }
+            
         }
         
+    }
+
+    private void OnTriggerExit(Collider other)  //Cuando el raycast deja de colisionar con el player
+    {
+        if (other.CompareTag("Player"))  //Empieza el Patrol Random
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+            {
+                Vector3 point;
+                if (RandomPoint(centrePoint.position, radius, out point)) //pass in our centre point and radius of area
+                {
+                    Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+                    agent.SetDestination(point);
+                }
+            }
+        }
     }
 
     void EnemyStateManagement()
@@ -187,6 +198,23 @@ public class EnemyTest : MonoBehaviour
         float anglee = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - rotationModifier;
         Quaternion q = Quaternion.AngleAxis(anglee, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speedRotation);
+    }
+
+    bool RandomPoint(Vector3 center, float radius, out Vector3 result)            //RANDOM PATROL
+    {
+
+        Vector3 randomPoint = center + Random.insideUnitSphere * radius; //random point in a sphere 
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
+            //or add a for loop like in the documentation
+            result = hit.position;
+            return true;
+        }
+
+        result = Vector3.zero;
+        return false;
     }
 
     private void FixedUpdate()
