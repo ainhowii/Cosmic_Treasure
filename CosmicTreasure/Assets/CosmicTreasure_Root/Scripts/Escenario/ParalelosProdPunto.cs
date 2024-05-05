@@ -30,34 +30,39 @@ public class ParalelosProdPunto : MonoBehaviour
         // Debug.Log("pp1 = " + dotProduct1);
         // Debug.Log("pp2 = " + dotProduct2);
 
-        if (dotProduct1 > 0 && dotProduct2 > 0) //Si player está detrás
+        if (dotProduct1 > 0 && dotProduct2 > 0 && playerDistance < maxDistance) //Si player está detrás
         {
             gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "FrontLayer1";
             gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
             Debug.Log("Detrás");
             if (playerDistance > maxDistance) { gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1); }
         }
-        else if (dotProduct1 < 0 && dotProduct2 > 0) //Si player está delante
+        else if (dotProduct1 < 0 && dotProduct2 > 0 && playerDistance < maxDistance) //Si player está delante
         {
             gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "BackLayer1";
             gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             Debug.Log("Delante");
         }
-        else if (dotProduct1 < 0 && dotProduct2 < 0) //Si player delante a la izq
+        else if (dotProduct1 < 0 && dotProduct2 < 0 && playerDistance < maxDistance) //Si player delante a la izq
         {
             gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "BackLayer1";
             gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             Debug.Log("DelanteIzq");
         }
-        else if (dotProduct1 > 0 && (dotProduct2 < 0)) //Si player detras a la izq
+        else if (dotProduct1 > 0 && dotProduct2 < 0 && playerDistance < maxDistance) //Si player detras a la izq
         {
             gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "FrontLayer1";
             gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
             Debug.Log("DetrásIzq");
-            if (transform.position.x < player.transform.position.x && playerDistance < maxDistance)       //Prueba: Usar la distancia para entrar a los IF
+            if (transform.position.x < player.transform.position.x && playerDistance < maxDistance)       //Si la posX de este objeto es menor que playerPosX y está dentro del rango
             {
                 gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
             }
+        }
+        else
+        {
+            gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "BackLayer1";
+            gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         }
     }
 }

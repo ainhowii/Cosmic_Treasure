@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: -21.77, y: -0.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1390121239672533148}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -134,3 +135,53 @@ PolygonCollider2D:
       - {x: -3.0502033, y: -2.3793454}
       - {x: 1.4609814, y: -4.70395}
   m_UseDelaunayMesh: 0
+--- !u!1 &5125318084885401304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390121239672533148}
+  - component: {fileID: 4378813287995584050}
+  m_Layer: 0
+  m_Name: Ray1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390121239672533148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125318084885401304}
+  m_LocalRotation: {x: -0, y: -0, z: -0.258819, w: 0.9659259}
+  m_LocalPosition: {x: -2.971, y: -2.374, z: 0.08915897}
+  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.9}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5972374840261249961}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30}
+--- !u!114 &4378813287995584050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5125318084885401304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59356c165696c504fb27353ea61e711c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  objectVector1: {x: 0, y: 0}
+  objectVector2: {x: 0, y: 0}
+  pointToPlayer: {x: 0, y: 0}
+  playerDistance: 0
+  maxDistance: 6
