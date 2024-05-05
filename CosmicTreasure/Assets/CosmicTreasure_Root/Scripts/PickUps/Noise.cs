@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Noise : MonoBehaviour
 {
-    public GameObject bulletPrefab;
+    public GameObject noisePrefab;
     public GameObject enemy;
     public GameObject noise;
     public float speed;
-    public float fireMine = 0;
+    public float fireNoise = 0;
     [SerializeField] private float radius;
 
     public Transform firePoint;
@@ -37,8 +37,8 @@ public class Noise : MonoBehaviour
 
     private void NoiseAction()   //Instancia el dispositivo
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireMine, ForceMode2D.Impulse);
+        GameObject bullet = Instantiate(noisePrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireNoise, ForceMode2D.Impulse);
         
     }
 
