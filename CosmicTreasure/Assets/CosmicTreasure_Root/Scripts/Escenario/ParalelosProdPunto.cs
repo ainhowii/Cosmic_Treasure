@@ -10,12 +10,14 @@ public class ParalelosProdPunto : MonoBehaviour
     [SerializeField] Vector2 pointToPlayer; //Vector entre el punto y el player
     [SerializeField] float playerDistance;
     [SerializeField] float maxDistance;
+    [SerializeField] float minTransparency;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         objectVector1 = new Vector2(2, 4).normalized;
         objectVector2 = new Vector2(2, -4).normalized;
+        minTransparency = .2f;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class ParalelosProdPunto : MonoBehaviour
         if (dotProduct1 > 0 && dotProduct2 > 0 && playerDistance < maxDistance) //Si player está detrás
         {
             gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "FrontLayer1";
-            gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+            gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, minTransparency);
             Debug.Log("Detrás");
             if (playerDistance > maxDistance) { gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1); }
         }
@@ -56,7 +58,7 @@ public class ParalelosProdPunto : MonoBehaviour
             Debug.Log("DetrásIzq");
             if (transform.position.x < player.transform.position.x && playerDistance < maxDistance)       //Si la posX de este objeto es menor que playerPosX y está dentro del rango
             {
-                gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+                gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, minTransparency);
             }
         }
         else
