@@ -41,9 +41,42 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: BackGround
+    uniqueID: 2257784401
+    locked: 0
+  - name: Ground
+    uniqueID: 1847952745
+    locked: 0
+  - name: BackLayer2
+    uniqueID: 1466153569
+    locked: 0
+  - name: GroundOver
+    uniqueID: 3665540867
+    locked: 0
+  - name: BackLayer1
+    uniqueID: 1906066853
+    locked: 0
+  - name: BackFX
+    uniqueID: 1883618031
+    locked: 0
+  - name: Pickup
+    uniqueID: 1673112063
+    locked: 0
+  - name: Enemy
+    uniqueID: 4259673797
+    locked: 0
+  - name: Player
+    uniqueID: 1518159415
+    locked: 0
+  - name: FrontFX
+    uniqueID: 4115044621
+    locked: 0
+  - name: FrontLayer1
     uniqueID: 2895071195
     locked: 0
-  - name: New Layer 2
-    uniqueID: 1906066853
+  - name: FrontLayer2
+    uniqueID: 1548417481
+    locked: 0
+  - name: Over
+    uniqueID: 3114757849
     locked: 0
