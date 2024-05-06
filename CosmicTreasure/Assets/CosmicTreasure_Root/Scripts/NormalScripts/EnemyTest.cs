@@ -8,7 +8,7 @@ public class EnemyTest : MonoBehaviour
     //CODEAR: ARREGLAR EL RANDOM PATROL, QUE DISPARE BIEN, QUE ALERTE A SUS COMPAÑEROS
 
     public NavMeshAgent agent;
-    public enum EnemyState { patroling, chasing, attacking}
+    public enum EnemyState { patroling, randomPatroling, chasing, attacking}
     Vector2 dir;
 
     [Header("Enemy Attributes")]
@@ -37,12 +37,13 @@ public class EnemyTest : MonoBehaviour
     [Header("Random Patrol")]
     public float radius;
     public Transform centrePoint;
-    private bool isDetected;         //Define cuando te ha detectado el enemigo
+    public bool isDetected;         //Define cuando te ha detectado el enemigo
 
     [Header("States Enemy")]
     [SerializeField] EnemyState currentState;
     private bool isChasing;
     private bool isShooting;
+    private bool isPatroling;
 
     public GameObject player;
 
@@ -70,6 +71,7 @@ public class EnemyTest : MonoBehaviour
     {
         
         if (!isChasing && !isShooting) { currentState = EnemyState.patroling; }
+        if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
         if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
         if (isChasing && isShooting) { currentState = EnemyState.attacking; }
 
@@ -96,6 +98,9 @@ public class EnemyTest : MonoBehaviour
 
                 if (isDetected && !r.collider.CompareTag("Player"))  //?????????
                 {
+                    isChasing = false;
+                    isShooting = false;
+                    isPatroling = false;
                     RandomPatrol();
                 }
 
@@ -155,6 +160,10 @@ public class EnemyTest : MonoBehaviour
                 
             case EnemyState.attacking:
                 EnemyAttack();
+                break;
+
+            case EnemyState.randomPatroling:
+                RandomPatrol();
                 break;
                 
         }

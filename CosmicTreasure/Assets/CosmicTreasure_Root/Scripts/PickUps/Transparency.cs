@@ -7,10 +7,14 @@ public class Transparency : MonoBehaviour
     SpriteRenderer ren;
     public GameObject player;
 
+    private bool isInvisible;
+
+    EnemyTest ray;
+
     // Start is called before the first frame update
     void Start()
     {
-       
+        isInvisible = false;
     }
 
     // Update is called once per frame
@@ -18,14 +22,20 @@ public class Transparency : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Alpha1)) //&& equippedTrans)
         {
-            TransAction();
+            isInvisible = true;
+
+            if (isInvisible)
+            {
+                // Desactivar raycast del enemigo (que no pueda detectarte)
+                TransAction();
+            }
         }
     }
 
     private void TransAction()  //Cambia la transparencia del player
     {
         ren = GetComponent<SpriteRenderer>();
-        ren.color = new Color(1f, 1f, 1f, 0.40f);
+        ren.color = new Color(1f, 1f, 1f, 0.35f);
         Invoke("Return", 5);
     }
 
