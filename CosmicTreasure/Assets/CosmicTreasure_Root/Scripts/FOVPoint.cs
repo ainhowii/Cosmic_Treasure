@@ -8,8 +8,8 @@ public class FOVPoint : MonoBehaviour
     public Transform fovPoint;
     public float range = 8;
 
-    public float velocidadRotacion = 45f; // Velocidad de rotación en grados por segundo
-    private bool rotarDerecha = true; // Variable para controlar la dirección de rotación
+    public float rotationSpeed = 45f; // Velocidad de rotación en grados por segundo
+    private bool rotateToRight = true; // Variable para controlar la dirección de rotación
 
     public Transform target;
 

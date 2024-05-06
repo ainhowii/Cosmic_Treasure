@@ -99,6 +99,9 @@ public class EnemyTest : MonoBehaviour
                     isShooting = true;
                     Debug.Log("Estoy atacando");
                 }
+
+                // Todos los enemigos con el tag "enemy" && que hagan trigger con el área de la habitación, pasan a modo chasing (isChasing = true)
+                // Si el raycast del enemigo ya no detecta al player (on trigger exit) todos pasan a Random Patrol
                 
             }
             else
@@ -107,6 +110,7 @@ public class EnemyTest : MonoBehaviour
                 isShooting = false;
                 Debug.Log("We dont seen");
             }
+
             
         }
         
