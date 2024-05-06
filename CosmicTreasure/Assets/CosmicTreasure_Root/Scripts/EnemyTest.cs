@@ -37,6 +37,7 @@ public class EnemyTest : MonoBehaviour
     [Header("Random Patrol")]
     public float radius;
     public Transform centrePoint;
+    private bool isDetected;         //Define cuando te ha detectado el enemigo
 
     [Header("States Enemy")]
     [SerializeField] EnemyState currentState;
@@ -52,6 +53,8 @@ public class EnemyTest : MonoBehaviour
     private void Start()
     {
         currentState = EnemyState.patroling;
+
+        isDetected = false;
 
         //PATHFINDING
         agent = GetComponent<NavMeshAgent>();
@@ -89,6 +92,13 @@ public class EnemyTest : MonoBehaviour
         {
             if (r.collider.CompareTag("Player"))
             {
+                isDetected = true;
+
+                if (isDetected && !r.collider.CompareTag("Player"))  //?????????
+                {
+                    RandomPatrol();
+                }
+
                 if (distanceFromPlayer > attackDistance)
                 {
                     isChasing = true;
@@ -116,21 +126,20 @@ public class EnemyTest : MonoBehaviour
         
     }
 
-    private void OnTriggerExit(Collider other)  //Cuando el raycast deja de colisionar con el player
-    {
-        if (other.CompareTag("Player"))  //Empieza el Patrol Random
-        {
+    private void RandomPatrol()
+    { 
             if (agent.remainingDistance <= agent.stoppingDistance) //done with path
             {
                 Vector3 point;
+
                 if (RandomPoint(centrePoint.position, radius, out point)) //pass in our centre point and radius of area
                 {
                     Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
                     agent.SetDestination(point);
                 }
             }
-        }
     }
+    
 
     void EnemyStateManagement()
     {

@@ -10,6 +10,7 @@ public class Noise : MonoBehaviour
     public GameObject noise;
     public float speed;
     public float fireNoise = 0;
+    private bool isDropped;
     [SerializeField] private float radius;
 
     public Transform firePoint;
@@ -19,7 +20,7 @@ public class Noise : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        isDropped = false;
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class Noise : MonoBehaviour
     {
         GameObject bullet = Instantiate(noisePrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireNoise, ForceMode2D.Impulse);
+        isDropped = true;
         
     }
 
