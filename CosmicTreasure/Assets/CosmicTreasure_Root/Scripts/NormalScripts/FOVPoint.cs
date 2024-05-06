@@ -8,7 +8,15 @@ public class FOVPoint : MonoBehaviour
     public Transform fovPoint;
     public float range = 8;
 
+    public float rotationSpeed = 45f; // Velocidad de rotación en grados por segundo
+    private bool rotateToRight = true; // Variable para controlar la dirección de rotación
+
     public Transform target;
+
+    private void Start()
+    {
+        //RotateAndWait();
+    }
 
     private void Update()
     {
@@ -29,5 +37,15 @@ public class FOVPoint : MonoBehaviour
                 Debug.Log("We dont seen");
             }
         }
+    }
+
+    IEnumerator RotateAndWait()   //Que sea continuo en loop
+    {
+        // Rotar 45 grados a la derecha
+        transform.Rotate(Vector3.forward, 45f);
+        yield return new WaitForSeconds(3f); // Esperar 3 segundos
+        // Rotar 45 grados a la izquierda
+        transform.Rotate(Vector3.forward, -45f);
+        yield return new WaitForSeconds(3f);
     }
 }

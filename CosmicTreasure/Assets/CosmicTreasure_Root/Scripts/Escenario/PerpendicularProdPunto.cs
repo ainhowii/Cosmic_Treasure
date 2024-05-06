@@ -10,14 +10,12 @@ public class PerpendicularProdPunto : MonoBehaviour
     [SerializeField] Vector2 pointToPlayer; //Vector entre el punto y el player
     [SerializeField] float playerDistance;
     [SerializeField] float maxDistance;
-    [SerializeField] float minTransparency;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         objectVector1 = new Vector2(2, 4).normalized;
         objectVector2 = new Vector2(2, -4).normalized;
-        minTransparency = .2f;
     }
 
     // Update is called once per frame
@@ -35,7 +33,7 @@ public class PerpendicularProdPunto : MonoBehaviour
         if (dotProduct1 < 0 && dotProduct2 < 0) //Si player está detrás
         {
             gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "FrontLayer1";
-            gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, minTransparency);
+            gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
             Debug.Log("Detrás");
             if (playerDistance > maxDistance) { gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1); }
         }
@@ -58,7 +56,7 @@ public class PerpendicularProdPunto : MonoBehaviour
             Debug.Log("DetrásIzq");
             if (transform.position.x > player.transform.position.x && playerDistance < maxDistance)       //Prueba: Usar la distancia para entrar a los IF
             {
-                gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, minTransparency);
+                gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
             }
         }
     }
