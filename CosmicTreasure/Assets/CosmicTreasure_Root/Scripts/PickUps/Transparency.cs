@@ -25,8 +25,8 @@ public class Transparency : MonoBehaviour
     private void TransAction()  //Cambia la transparencia del player
     {
         ren = GetComponent<SpriteRenderer>();
-        ren.color = new Color(1f, 1f, 1f, 0.45f);
-        Invoke("Return", 10);
+        ren.color = new Color(1f, 1f, 1f, 0.40f);
+        Invoke("Return", 5);
     }
 
     private void Return()  //Vuelve a ser opaco el player
