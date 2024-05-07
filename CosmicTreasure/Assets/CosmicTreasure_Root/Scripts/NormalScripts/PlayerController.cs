@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
+    //Codear: Estado de sigilo del Player, acabar player con sus sprites, que el enemigo te siga si te oye 
+
     public Rigidbody2D body;
 
     public SpriteRenderer spriteRenderer;
@@ -21,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public float frameRate;
 
     float idleTime;
+
+    //Variable para la mecanica del sonido
+    private Transform enemy;     
+    public float lineOfSite;
+    EnemyTest chasing;
 
     [SerializeField] private UI_Inventory uiInventory;
     private Inventory inventory;
@@ -62,18 +70,31 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        
+        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
     private void Update()
     {
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
+        float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);               //Cuando el enemigo entra en la zona del player, pasa a chasing
+        if (distanceFromEnemy < lineOfSite)
+        {
+            chasing.isChasing = true;
+        }
+
         body.velocity = direction * walkSpeed;
 
         HandleSpriteFlip();
         SetSprite();
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, lineOfSite);
+    }
+
 
     void SetSprite()
     {

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyTest : MonoBehaviour
 {
-    //CODEAR: ARREGLAR EL RANDOM PATROL, QUE DISPARE BIEN, QUE ALERTE A SUS COMPAÑEROS
+    //CODEAR: ARREGLAR EL RANDOM PATROL, QUE "DISPARE" BIEN, QUE ALERTE A SUS COMPAÑEROS
 
     public NavMeshAgent agent;
     public enum EnemyState { patroling, randomPatroling, chasing, attacking}
@@ -41,9 +41,9 @@ public class EnemyTest : MonoBehaviour
 
     [Header("States Enemy")]
     [SerializeField] EnemyState currentState;
-    private bool isChasing;
-    private bool isShooting;
-    private bool isPatroling;
+    public bool isChasing;
+    public bool isShooting;
+    public bool isPatroling;
 
     public GameObject player;
 
