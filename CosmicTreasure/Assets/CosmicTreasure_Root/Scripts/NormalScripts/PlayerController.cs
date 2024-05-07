@@ -22,7 +22,16 @@ public class PlayerController : MonoBehaviour
 
     float idleTime;
 
+    [SerializeField] private UI_Inventory uiInventory;
+    private Inventory inventory;
+
+
     Vector2 direction;
+
+    private void Awake()
+    {
+        inventory = new Inventory();
+    }
 
     private void Start()
     {

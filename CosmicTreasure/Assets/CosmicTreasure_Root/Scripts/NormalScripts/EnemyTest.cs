@@ -71,7 +71,7 @@ public class EnemyTest : MonoBehaviour
     {
         
         if (!isChasing && !isShooting) { currentState = EnemyState.patroling; }
-        if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
+       // if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
         if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
         if (isChasing && isShooting) { currentState = EnemyState.attacking; }
 
@@ -95,7 +95,7 @@ public class EnemyTest : MonoBehaviour
             if (r.collider.CompareTag("Player"))
             {
                 isDetected = true;
-
+                /*
                 if (isDetected && !r.collider.CompareTag("Player"))  //?????????
                 {
                     isChasing = false;
@@ -103,6 +103,7 @@ public class EnemyTest : MonoBehaviour
                     isPatroling = false;
                     RandomPatrol();
                 }
+                */
 
                 if (distanceFromPlayer > attackDistance)
                 {
