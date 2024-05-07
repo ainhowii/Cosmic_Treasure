@@ -30,7 +30,34 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        inventory = new Inventory();
+        inventory = new Inventory(UseItem);
+        uiInventory.SetInventory(inventory);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
+        if (itemWorld != null)
+        {
+            //Touching item
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
+    }
+
+    private void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.Noise:
+                //FlashGreen();                                               //AQUI IRIA EL METODO DE LO QUE HACE EL OBJETO
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Noise, amount = 1 });
+                break;
+            case Item.ItemType.Charge:
+                //FlashBlue();                                                //AQUI TAMBIEN
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Charge, amount = 1 });
+                break;
+        }
     }
 
     private void Start()
