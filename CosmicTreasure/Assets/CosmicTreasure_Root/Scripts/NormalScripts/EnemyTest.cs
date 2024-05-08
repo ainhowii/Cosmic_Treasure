@@ -51,8 +51,11 @@ public class EnemyTest : MonoBehaviour
 
     public Transform target;
 
+    [SerializeField] PlayerController controller;
+
     private void Start()
     {
+
         currentState = EnemyState.patroling;
 
         isDetected = false;
@@ -205,10 +208,11 @@ public class EnemyTest : MonoBehaviour
         agent.SetDestination(transform.position);
         Debug.Log("ENTRA TIRO");
         LookAt(player.transform);
+        controller.walkSpeed = 0f;       //SALTA ERROR
         //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;          //QUE EL PLAYER PASE A ESTATICO
-        atkCD = fireRate;
-        GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
-        Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
+        //atkCD = fireRate;
+        //GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
+        //Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
     }
 
     private void Rotate()
