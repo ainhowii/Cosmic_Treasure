@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        inventory = new Inventory(UseItem);
-        uiInventory.SetInventory(inventory);
+        //inventory = new Inventory(UseItem);
+        //uiInventory.SetInventory(inventory);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -77,13 +77,13 @@ public class PlayerController : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
+        body.velocity = direction * walkSpeed;
+
         float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);               //Cuando el enemigo entra en la zona del player, pasa a chasing
         if (distanceFromEnemy < lineOfSite)
         {
             chasing.isChasing = true;
         }
-
-        body.velocity = direction * walkSpeed;
 
         HandleSpriteFlip();
         SetSprite();
