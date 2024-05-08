@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
     private void Update()
@@ -79,11 +79,13 @@ public class PlayerController : MonoBehaviour
 
         body.velocity = direction * walkSpeed;
 
+        /*
         float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);               //Cuando el enemigo entra en la zona del player, pasa a chasing
         if (distanceFromEnemy < lineOfSite)
         {
             chasing.isChasing = true;
         }
+        */
 
         HandleSpriteFlip();
         SetSprite();
