@@ -45,7 +45,7 @@ public class ParalelosProdPunto : MonoBehaviour
         }
         else if (dotProduct1 < 0 && dotProduct2 < 0) //Si player delante a la izq
         {
-            gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "BackLayer1";
+            gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = "FrontLayer1";
             gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             Debug.Log("DelanteIzq");
         }
