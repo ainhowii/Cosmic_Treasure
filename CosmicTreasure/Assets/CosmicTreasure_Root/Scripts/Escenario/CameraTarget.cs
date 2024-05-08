@@ -17,7 +17,7 @@ public class CameraTarget : MonoBehaviour
     void Update()
     {
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //Checkea pos mouse
-        Vector3 targetPos = new Vector3((player.position.x + mousePos.x)/2 , (player.position.y + mousePos.y))/2f; //Calcula la distancia entre player y mousepos
+        Vector3 targetPos = new Vector3((player.position.x + mousePos.x) , (player.position.y + mousePos.y))/2f; //Calcula la distancia entre player y mousepos
 
         targetPos.x = Mathf.Clamp(targetPos.x, -threshold + player.position.x, threshold + player.position.x); //Constraint (Value, lower threshold, upper threshold
         targetPos.y = Mathf.Clamp(targetPos.y, -threshold + player.position.y, threshold + player.position.y);

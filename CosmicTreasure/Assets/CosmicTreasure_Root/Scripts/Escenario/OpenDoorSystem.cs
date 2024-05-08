@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class OpenDoorSystem : MonoBehaviour
 {
     Animator anim;
     Collider2D col;
+    [SerializeField] GameObject roof;
+    SpriteShapeRenderer shapeRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
        anim = gameObject.GetComponentInParent<Animator>(); 
         col = gameObject.GetComponent<Collider2D>();
+        shapeRenderer = roof.GetComponent<SpriteShapeRenderer>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class OpenDoorSystem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             anim.Play("DoorOpenAnim");
+            shapeRenderer.color = new Color(1f,1f,1f,0f);
         }
     }
 
