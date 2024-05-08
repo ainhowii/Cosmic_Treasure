@@ -95,6 +95,13 @@ public class EnemyTest : MonoBehaviour
             if (r.collider.CompareTag("Player"))
             {
                 isDetected = true;
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+                foreach (GameObject enemy in enemies)
+                {
+                    
+                }
+
                 /*
                 if (isDetected && !r.collider.CompareTag("Player"))  //?????????
                 {
@@ -198,6 +205,7 @@ public class EnemyTest : MonoBehaviour
         agent.SetDestination(transform.position);
         Debug.Log("ENTRA TIRO");
         LookAt(player.transform);
+        //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;          //QUE EL PLAYER PASE A ESTATICO
         atkCD = fireRate;
         GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
         Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
