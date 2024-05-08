@@ -22,8 +22,26 @@ public class GameManager : MonoBehaviour
     public int points;
     public int winPoints;
 
+    public bool[] keyChain;
+
     private void Awake()
     {
         _instance = this;
+    }
+
+
+    private void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void AddKey(int keyType)
+    {
+        keyChain[keyType] = true;
     }
 }
