@@ -8,7 +8,7 @@ public class CameraTarget : MonoBehaviour
 
     [SerializeField] Camera cam;
     [SerializeField] Transform player;
-    [SerializeField] float threshold;
+    [SerializeField] float threshold; //La cantidad de desplazamiento
     
     
    
@@ -22,6 +22,6 @@ public class CameraTarget : MonoBehaviour
         targetPos.x = Mathf.Clamp(targetPos.x, -threshold + player.position.x, threshold + player.position.x); //Constraint (Value, lower threshold, upper threshold
         targetPos.y = Mathf.Clamp(targetPos.y, -threshold + player.position.y, threshold + player.position.y);
 
-        this.transform.position = targetPos;
+        this.transform.position = targetPos; //La pos de la camara = la pos del mouse ??
     }
 }
