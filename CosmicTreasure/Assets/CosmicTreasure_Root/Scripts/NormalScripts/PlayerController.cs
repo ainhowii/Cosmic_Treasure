@@ -31,18 +31,18 @@ public class PlayerController : MonoBehaviour
     EnemyTest chasing;
 
     [SerializeField] private UI_Inventory uiInventory;
-    private Inventory inventory;
+    [SerializeField] private Inventory inventory;
 
 
     Vector2 direction;
 
     private void Awake()
     {
-        //inventory = new Inventory(UseItem);
-        //uiInventory.SetInventory(inventory);
+        inventory = new Inventory(UseItem);
+        uiInventory.SetInventory(inventory);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)               //Coger Item
     {
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
         if (itemWorld != null)
