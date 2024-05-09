@@ -9,6 +9,7 @@ public class OpenDoorSystem : MonoBehaviour
     Collider2D col;
     [SerializeField] GameObject roof;
     SpriteShapeRenderer shapeRenderer;
+    [SerializeField] GameObject closeCol;
     
     // Start is called before the first frame update
     void Start()
@@ -26,16 +27,18 @@ public class OpenDoorSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && GameManager.Instance.keyChain[1] == true)
         {
             anim.Play("DoorOpenAnim");
             shapeRenderer.color = new Color(1f,1f,1f,0f);
+            closeCol.GetComponent<Collider2D>().enabled = false;
+
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && GameManager.Instance.keyChain[1] == true)
         {
             anim.Play("DoorCloseAnim");
         }
