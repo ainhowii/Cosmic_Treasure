@@ -7,7 +7,7 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
-    //Codear: Estado de sigilo del Player, acabar player con sus sprites, que el enemigo te siga si te oye 
+    //Codear: Estado de sigilo del Player, que el enemigo te siga si te oye 
 
     public Rigidbody2D body;
 

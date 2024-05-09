@@ -10,6 +10,8 @@ public class EnemyTest : MonoBehaviour
     public NavMeshAgent agent;
     public enum EnemyState { patroling, randomPatroling, chasing, attacking}
     Vector2 dir;
+    Vector2 direction;
+    private Animator anim;
 
     [Header("Enemy Attributes")]
     public float fireRate = 1f;  //PARA QUE NO TE TIRE UNA RAFAGA DE TIROS
@@ -72,7 +74,9 @@ public class EnemyTest : MonoBehaviour
 
     private void Update()
     {
-        
+        HandleSpriteFlip();             //Flipear Sprites
+        GetSpriteDirection();           //Cambia de Sprites segun la direccion
+
         if (!isChasing && !isShooting) { currentState = EnemyState.patroling; }
        // if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
         if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
@@ -261,4 +265,53 @@ public class EnemyTest : MonoBehaviour
         }
 
     }
-}
+
+    void HandleSpriteFlip()
+    {
+        if (!spriteRenderer.flipX && direction.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (spriteRenderer.flipX && direction.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+    }
+
+    void GetSpriteDirection()
+    {
+
+
+        if (direction.y > 0) //North
+        {
+            if (Mathf.Abs(direction.x) > 0) //east or west
+            {
+                anim.SetTrigger("Mov_NE");
+            }
+            else //neutral X
+            {
+                anim.SetTrigger("Mov_N");
+            }
+        }
+        else if (direction.y < 0) //South
+        {
+            if (Mathf.Abs(direction.x) > 0) //east or west
+            {
+                anim.SetTrigger("Mov_SE");
+            }
+            else
+            {
+                anim.SetTrigger("Mov_S");
+            }
+        }
+        else //neutral
+        {
+            if (Mathf.Abs(direction.x) > 0) //east or west
+            {
+                anim.SetTrigger("Mov_E");
+            }
+        }
+
+    }
+ }
