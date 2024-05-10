@@ -57,6 +57,7 @@ public class EnemyTest : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
 
         currentState = EnemyState.patroling;
 
@@ -74,6 +75,7 @@ public class EnemyTest : MonoBehaviour
 
     private void Update()
     {
+        direction = target.transform.position - transform.position;
         HandleSpriteFlip();             //Flipear Sprites
         GetSpriteDirection();           //Cambia de Sprites segun la direccion
 
@@ -90,12 +92,6 @@ public class EnemyTest : MonoBehaviour
         dir = target.position - transform.position;
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
-
-
-        if (distanceFromPlayer < 5)
-        {
-            Debug.Log("Estoy cerca...");
-        }
 
         if (angle < fovAngle / 2)
         {
@@ -212,7 +208,7 @@ public class EnemyTest : MonoBehaviour
         agent.SetDestination(transform.position);
         Debug.Log("ENTRA TIRO");
         LookAt(player.transform);
-        controller.walkSpeed = 0f;       //SALTA ERROR
+        controller.walkSpeed = 0f;      
         //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;          //QUE EL PLAYER PASE A ESTATICO
         //atkCD = fireRate;
         //GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
@@ -287,29 +283,50 @@ public class EnemyTest : MonoBehaviour
         {
             if (Mathf.Abs(direction.x) > 0) //east or west
             {
-                anim.SetTrigger("Mov_NE");
+                anim.SetBool("Mov_NE", true);
+                anim.SetBool("Mov_N", false);
+                anim.SetBool("Mov_SE", false);
+                anim.SetBool("Mov_S", false);
+                anim.SetBool("Mov_E", false);
+
             }
             else //neutral X
             {
-                anim.SetTrigger("Mov_N");
+                anim.SetBool("Mov_NE", false);
+                anim.SetBool("Mov_N", true);
+                anim.SetBool("Mov_SE", false);
+                anim.SetBool("Mov_S", false);
+                anim.SetBool("Mov_E", false);
             }
         }
         else if (direction.y < 0) //South
         {
             if (Mathf.Abs(direction.x) > 0) //east or west
             {
-                anim.SetTrigger("Mov_SE");
+                anim.SetBool("Mov_NE", false);
+                anim.SetBool("Mov_N", false);
+                anim.SetBool("Mov_SE", true);
+                anim.SetBool("Mov_S", false);
+                anim.SetBool("Mov_E", false);
             }
             else
             {
-                anim.SetTrigger("Mov_S");
+                anim.SetBool("Mov_NE", false);
+                anim.SetBool("Mov_N", false);
+                anim.SetBool("Mov_SE", false);
+                anim.SetBool("Mov_S", true);
+                anim.SetBool("Mov_E", false);
             }
         }
         else //neutral
         {
             if (Mathf.Abs(direction.x) > 0) //east or west
             {
-                anim.SetTrigger("Mov_E");
+                anim.SetBool("Mov_NE", false);
+                anim.SetBool("Mov_N", false);
+                anim.SetBool("Mov_SE", false);
+                anim.SetBool("Mov_S", false);
+                anim.SetBool("Mov_E", true);
             }
         }
 
