@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        keyChain[0] = true; //El valor 0 reservado para transparentar paredes genéricas
     }
 
     private void Update()
@@ -43,6 +43,6 @@ public class GameManager : MonoBehaviour
 
     public void AddKey(int keyType)
     {
-        keyChain[keyType] = true;
+        keyChain[keyType] = true; //Pasa a true el bool del array keyChain
     }
 }
