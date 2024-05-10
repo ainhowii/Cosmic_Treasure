@@ -37,7 +37,11 @@ public class PlayerController : MonoBehaviour
 
     public float walkSpeed;
 
+    public float walkSpeedStealth;
+
     public float frameRate;
+
+    public float frameRateStealth;
 
     float idleTime;
 
@@ -88,7 +92,7 @@ public class PlayerController : MonoBehaviour
     {
         uiInventory.SetInventory(inventory);
 
-        currentState = PlayerState.normal;
+        //currentState = PlayerState.normal;
         //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
@@ -96,10 +100,25 @@ public class PlayerController : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
-        body.velocity = direction * walkSpeed;
+        //body.velocity = direction * walkSpeed;
+
+        PlayerStateManagement();
 
         if (isNormal && !isStealth) { currentState = PlayerState.normal; }
         if (isNormal! && isStealth) { currentState = PlayerState.stealth; }
+
+        if (Input.GetKeyDown(KeyCode.F) && isNormal)
+        {
+            Debug.Log("Cambio a stealth");
+            isNormal = false;
+            isStealth = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && !isNormal)
+        {
+            Debug.Log("Cambio a normal");
+            isNormal = true;
+            isStealth = false;
+        }
 
         /*
         float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);               //Cuando el enemigo entra en la zona del player, pasa a chasing
@@ -109,8 +128,8 @@ public class PlayerController : MonoBehaviour
         }
         */
 
-        HandleSpriteFlip();
-        SetSprite();
+        //HandleSpriteFlip();
+        //SetSprite();
     }
 
     private void OnDrawGizmosSelected()
@@ -199,7 +218,7 @@ public class PlayerController : MonoBehaviour
         { //holding a direction
 
             float playTime = Time.time - idleTime;
-            int totalFrames = (int)(playTime * frameRate);
+            int totalFrames = (int)(playTime * frameRateStealth);
             int frame = totalFrames % directionSprites.Count;
 
             spriteRenderer.sprite = directionSprites[frame];
@@ -264,12 +283,18 @@ public class PlayerController : MonoBehaviour
 
     private void Normal()
     {
-
+        Debug.Log("Estoy en normal");
+        body.velocity = direction * walkSpeed;
+        HandleSpriteFlip();
+        SetSprite();
     }
 
     private void Stealth()
     {
-
+        Debug.Log("Estoy en sigilo");
+        body.velocity = direction * walkSpeedStealth;
+        HandleSpriteFlipStealth();
+        SetSpriteStealth();
     }
 
     void PlayerStateManagement()
