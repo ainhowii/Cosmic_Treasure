@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Scripting.APIUpdating;
+using static EnemyTest;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,11 +14,26 @@ public class PlayerController : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    public enum PlayerState { normal, stealth }
+
+    [Header("States Player")]
+    [SerializeField] PlayerState currentState;
+    public bool isNormal;
+    public bool isStealth;
+
+    [Header("Normal Animation")]
     public List<Sprite> nSprites;
     public List<Sprite> neSprites;
     public List<Sprite> eSprites;
     public List<Sprite> seSprites;
     public List<Sprite> sSprites;
+
+    [Header("Stealth Animation")]
+    public List<Sprite> nCSprites;
+    public List<Sprite> neCSprites;
+    public List<Sprite> eCSprites;
+    public List<Sprite> seCSprites;
+    public List<Sprite> sCSprites;
 
     public float walkSpeed;
 
@@ -26,7 +42,7 @@ public class PlayerController : MonoBehaviour
     float idleTime;
 
     //Variable para la mecanica del sonido
-    private Transform enemy;     
+    private Transform enemy;
     public float lineOfSite;
     EnemyTest chasing;
 
@@ -71,6 +87,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         uiInventory.SetInventory(inventory);
+
+        currentState = PlayerState.normal;
         //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
@@ -79,6 +97,9 @@ public class PlayerController : MonoBehaviour
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
         body.velocity = direction * walkSpeed;
+
+        if (isNormal && !isStealth) { currentState = PlayerState.normal; }
+        if (isNormal! && isStealth) { currentState = PlayerState.stealth; }
 
         /*
         float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);               //Cuando el enemigo entra en la zona del player, pasa a chasing
@@ -170,6 +191,102 @@ public class PlayerController : MonoBehaviour
 
     }
 
-   
+    void SetSpriteStealth()
+    {
+        List<Sprite> directionSprites = GetSpriteDirectionStealth();
 
+        if (directionSprites != null)
+        { //holding a direction
+
+            float playTime = Time.time - idleTime;
+            int totalFrames = (int)(playTime * frameRate);
+            int frame = totalFrames % directionSprites.Count;
+
+            spriteRenderer.sprite = directionSprites[frame];
+        }
+        else
+        {
+            idleTime = Time.time;
+        }
+
+    }
+
+    void HandleSpriteFlipStealth()
+    {
+        if (!spriteRenderer.flipX && direction.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (spriteRenderer.flipX && direction.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+    }
+
+    List<Sprite> GetSpriteDirectionStealth()
+    {
+        List<Sprite> selectedSprites = null;
+
+        if (direction.y > 0) //North
+        {
+            if (Mathf.Abs(direction.x) > 0) //east or west
+            {
+                selectedSprites = neCSprites;
+            }
+            else //neutral X
+            {
+                selectedSprites = nCSprites;
+            }
+        }
+        else if (direction.y < 0) //South
+        {
+            if (Mathf.Abs(direction.x) > 0) //east or west
+            {
+                selectedSprites = seCSprites;
+            }
+            else
+            {
+                selectedSprites = sCSprites;
+            }
+        }
+        else //neutral
+        {
+            if (Mathf.Abs(direction.x) > 0) //east or west
+            {
+                selectedSprites = eCSprites;
+            }
+        }
+
+        return selectedSprites;
+
+    }
+
+    private void Normal()
+    {
+
+    }
+
+    private void Stealth()
+    {
+
+    }
+
+    void PlayerStateManagement()
+    {
+        switch (currentState)
+        {
+            case PlayerState.normal:
+                Normal();
+                break;
+
+            case PlayerState.stealth:
+                Stealth();
+                break;
+
+        }
+
+
+
+    }
 }

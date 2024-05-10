@@ -93,12 +93,6 @@ public class EnemyTest : MonoBehaviour
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
 
-
-        if (distanceFromPlayer < 5)
-        {
-            Debug.Log("Estoy cerca...");
-        }
-
         if (angle < fovAngle / 2)
         {
             if (r.collider.CompareTag("Player"))
