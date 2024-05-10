@@ -22,7 +22,7 @@ public class UI_Inventory : MonoBehaviour
     {
         this.inventory = inventory;
 
-        inventory.OnItemListChanged += Inventory_OnItemListChanged;    //??????
+        inventory.OnItemListChanged += Inventory_OnItemListChanged; 
 
         RefreshInventoryItems();
     }

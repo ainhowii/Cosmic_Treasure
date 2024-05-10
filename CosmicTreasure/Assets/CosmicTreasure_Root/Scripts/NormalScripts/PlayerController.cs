@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         inventory = new Inventory(UseItem);
-        uiInventory.SetInventory(inventory);
+        //uiInventory.SetInventory(inventory);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)               //Coger Item
@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        uiInventory.SetInventory(inventory);
         //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
