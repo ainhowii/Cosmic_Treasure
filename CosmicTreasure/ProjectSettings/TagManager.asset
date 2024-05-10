@@ -48,6 +48,9 @@ TagManager:
   - name: Ground
     uniqueID: 1847952745
     locked: 0
+  - name: BackLayer2Sub
+    uniqueID: 2450688085
+    locked: 0
   - name: BackLayer2
     uniqueID: 1466153569
     locked: 0
@@ -77,6 +80,9 @@ TagManager:
     locked: 0
   - name: FrontLayer2
     uniqueID: 1548417481
+    locked: 0
+  - name: FrontLayer2Top
+    uniqueID: 691450155
     locked: 0
   - name: Over
     uniqueID: 3114757849

@@ -8,7 +8,7 @@ public class OpenDoorSystem : MonoBehaviour
     Animator anim;
     Collider2D col;
     [SerializeField] GameObject roof;
-    SpriteShapeRenderer shapeRenderer;
+    SpriteRenderer shapeRenderer;
     [SerializeField] GameObject closeCol;
     [SerializeField] int keyToOpen;
     
@@ -17,7 +17,7 @@ public class OpenDoorSystem : MonoBehaviour
     {
        anim = gameObject.GetComponentInParent<Animator>(); 
         col = gameObject.GetComponent<Collider2D>();
-        shapeRenderer = roof.GetComponent<SpriteShapeRenderer>();
+        shapeRenderer = roof.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
