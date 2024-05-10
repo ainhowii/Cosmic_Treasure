@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         PlayerStateManagement();
 
         if (isNormal && !isStealth) { currentState = PlayerState.normal; }
-        if (isNormal! && isStealth) { currentState = PlayerState.stealth; }
+        if (!isNormal && isStealth) { currentState = PlayerState.stealth; }
 
         if (Input.GetKeyDown(KeyCode.F) && isNormal)
         {
