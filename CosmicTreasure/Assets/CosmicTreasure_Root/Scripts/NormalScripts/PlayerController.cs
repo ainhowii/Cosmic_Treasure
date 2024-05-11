@@ -8,7 +8,7 @@ using static EnemyTest;
 
 public class PlayerController : MonoBehaviour
 {
-    //Codear: Estado de sigilo del Player, que el enemigo te siga si te oye 
+    //Codear: Que el enemigo te siga si te oye 
 
     public Rigidbody2D body;
 
