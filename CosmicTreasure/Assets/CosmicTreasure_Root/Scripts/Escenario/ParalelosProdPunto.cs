@@ -15,6 +15,7 @@ public class ParalelosProdPunto : MonoBehaviour
     [SerializeField] int keyNum;            //Define la llave de la puerta que permite transparencia
     [SerializeField] string defaultLayer;
     [SerializeField] string actionLayer;
+    [SerializeField] float actionAlpha;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +41,7 @@ public class ParalelosProdPunto : MonoBehaviour
             if (dotProduct1 > 0 && dotProduct2 > 0) //Si player está detrás
             {
                 gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = actionLayer;   //.sortingLayerName = "FrontLayer1";
-                gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+                gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, actionAlpha);
                 Debug.Log("Detrás");
                 if (playerDistance > maxDistance) { gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1); }
             }
@@ -63,7 +64,7 @@ public class ParalelosProdPunto : MonoBehaviour
                 Debug.Log("DetrásIzq");
                 if (transform.position.x < player.transform.position.x && playerDistance < maxDistance)       //Prueba: Usar la distancia para entrar a los IF
                 {
-                    gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, .5f);
+                    gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, actionAlpha);
                 }
             }
         }

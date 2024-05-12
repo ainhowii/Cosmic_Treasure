@@ -54,6 +54,7 @@ MonoBehaviour:
   keyNum: 0
   defaultLayer: 
   actionLayer: 
+  actionAlpha: 0.25
 --- !u!114 &1538571659090170456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
   keyNum: 0
   defaultLayer: 
   actionLayer: 
+  actionAlpha: 0
 --- !u!1 &8966346498602468056
 GameObject:
   m_ObjectHideFlags: 0
