@@ -193,3 +193,7 @@ MonoBehaviour:
   pointToPlayer: {x: 0, y: 0}
   playerDistance: 0
   maxDistance: 6
+  keyNum: 0
+  defaultLayer: 
+  actionLayer: 
+  actionAlpha: 0.25
