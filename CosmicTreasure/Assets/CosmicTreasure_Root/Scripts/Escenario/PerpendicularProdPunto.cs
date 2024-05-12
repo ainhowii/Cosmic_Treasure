@@ -29,7 +29,7 @@ public class PerpendicularProdPunto : MonoBehaviour
         float dotProduct1 = Vector2.Dot(objectVector1, pointToPlayer);  //ProductoPunto que divide NE-SO
         float dotProduct2 = Vector2.Dot(objectVector2, pointToPlayer);  //ProductoPunto que divide NO-SE
         playerDistance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log("Distance = " + playerDistance);
+        //Debug.Log("Distance = " + playerDistance);
 
         // Debug.Log("pp1 = " + dotProduct1);
         // Debug.Log("pp2 = " + dotProduct2);
@@ -41,26 +41,26 @@ public class PerpendicularProdPunto : MonoBehaviour
             {
                 gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = actionLayer;//"FrontLayer1";
                 gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, actionAlpha);
-                Debug.Log("Detrás");
+                //Debug.Log("Detrás");
                 if (playerDistance > maxDistance) { gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1); }
             }
             else if (dotProduct1 < 0 && dotProduct2 > 0) //Si player está delante
             {
                 gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = defaultLayer;//"BackLayer1";
                 gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                Debug.Log("Delante");
+                //Debug.Log("Delante");
             }
             else if (dotProduct1 > 0 && dotProduct2 > 0) //Si player delante a la der
             {
                 gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = defaultLayer;//"BackLayer1";
                 gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                Debug.Log("DelanteIzq");
+                //Debug.Log("DelanteIzq");
             }
             else if (dotProduct1 > 0 && (dotProduct2 < 0)) //Si player detras a la der
             {
                 gameObject.GetComponentInParent<SpriteRenderer>().sortingLayerName = actionLayer;//"FrontLayer1";
                 gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
-                Debug.Log("DetrásIzq");
+                //Debug.Log("DetrásIzq");
                 if (transform.position.x > player.transform.position.x && playerDistance < maxDistance)       //Prueba: Usar la distancia para entrar a los IF
                 {
                     gameObject.GetComponentInParent<SpriteRenderer>().color = new Color(1, 1, 1, actionAlpha);
