@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     [SerializeField] Collider2D[] enemCol;
+    public bool enemyDetection;
     [SerializeField]LayerMask enemyLayer;
 
     public enum PlayerState { normal, stealth }
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Inventory inventory;
 
 
-    Vector2 direction;
+    public Vector2 direction;
 
     private void Awake()
     {
@@ -123,19 +124,8 @@ public class PlayerController : MonoBehaviour
             isStealth = false;
         }
 
-        /*
-        enemCol = Physics2D.OverlapCircleAll(transform.position, lineOfSite, enemyLayer);
-
-        for (int i = 0; i < enemCol.Length; i++)
-        {
-            EnemyTest enemy = enemCol[i].GetComponent<EnemyTest>();
-            if (enemy != null)
-            {
-                enemy.target = this.gameObject.transform;
-            }
-
-        }
-        */
+        
+        
         
         
         /*
