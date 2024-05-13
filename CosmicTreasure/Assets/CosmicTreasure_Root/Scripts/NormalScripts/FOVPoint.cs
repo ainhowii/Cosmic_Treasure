@@ -10,20 +10,32 @@ public class FOVPoint : MonoBehaviour
 
     public float rotationSpeed = .15f;  // Velocidad de rotación 
 
-   
+    [SerializeField]private bool forwardDir;
 
 
 
     private void Start()
     {
         //StartCoroutine(RotateAndWait());
+        forwardDir = true;
     }
 
     private void Update()
     {
 
         
-        transform.Rotate(0, 0, rotationSpeed);
+        if (transform.rotation.z < .25 && forwardDir == true) { transform.Rotate(0, 0, rotationSpeed); }
+        else if (transform.rotation.z >= .25)
+        {
+            forwardDir=false;
+            rotationSpeed = -rotationSpeed;
+        }
+        else if(transform.rotation.z <=-.25 && forwardDir == false)
+        {
+            forwardDir = true;
+            rotationSpeed = -rotationSpeed;
+        }
+        
         /*if (transform.rotation.z <= 0)
         {
             transform.Rotate(0, 0, rotationSpeed);
