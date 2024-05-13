@@ -20,11 +20,14 @@ public class FOVPoint : MonoBehaviour
     private void Update()
     {
 
-        Vector2 dir = target.position - transform.position;
+        Vector2 dir = Vector2.zero;
+        float singleStep = rotationSpeed * Time.deltaTime;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, dir, singleStep, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
         float angle = Vector3.Angle(dir, fovPoint.up);
         RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
 
-        if (angle < fovAngle / 2)
+        if (angle < fovAngle / 2)  //Si el angulo es menor que 90 /2 ?????
         {
             if (r.collider.CompareTag("Player"))
             {
