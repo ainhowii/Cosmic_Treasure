@@ -134,7 +134,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: InterfazBueno_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 361
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545494df7e61bcb4da0e47ef697d9bf7
+      internalID: -981084879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 327
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff2118414ec2b64382e0e7e570a7a99
+      internalID: -679253957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_2
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 294
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66160690b6a925342b760838ad70fc5d
+      internalID: 2095906637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_3
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 260
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1deecbd4b697784287545de1c55e3af
+      internalID: 549864947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 111
+        width: 39
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c06877c53c53634baf1e556b25f9f4f
+      internalID: 1137985669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_5
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 111
+        width: 133
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e358590c35512084b8e41ff96482fe6e
+      internalID: 871859956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 111
+        width: 133
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e876885b042c4c469dc2d7fb75d76a3
+      internalID: 1689811563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_7
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 111
+        width: 133
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2253331ad26e23d4ebb7b08a6298cf6c
+      internalID: 1358544951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_8
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 111
+        width: 133
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d92d3be50a5fc9e4499f66e7ebac1d88
+      internalID: 56249827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_9
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 61
+        width: 133
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d290d810273cd154e9fcafb75e3d0c2a
+      internalID: 275306632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InterfazBueno_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 24
+        width: 133
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9968f24e5acaf6429a3a86247522e46
+      internalID: 1633339596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +376,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      InterfazBueno_0: -981084879
+      InterfazBueno_1: -679253957
+      InterfazBueno_10: 1633339596
+      InterfazBueno_2: 2095906637
+      InterfazBueno_3: 549864947
+      InterfazBueno_4: 1137985669
+      InterfazBueno_5: 871859956
+      InterfazBueno_6: 1689811563
+      InterfazBueno_7: 1358544951
+      InterfazBueno_8: 56249827
+      InterfazBueno_9: 275306632
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
