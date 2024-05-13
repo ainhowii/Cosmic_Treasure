@@ -2536,6 +2536,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8830379873280536563, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0169218
+      objectReference: {fileID: 0}
+    - target: {fileID: -8830379873280536563, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6779479
+      objectReference: {fileID: 0}
+    - target: {fileID: -8830379873280536563, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8830379873280536563, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.056495667
+      objectReference: {fileID: 0}
+    - target: {fileID: -8830379873280536563, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.7005461
+      objectReference: {fileID: 0}
     - target: {fileID: 1078622911528510892, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
       propertyPath: player
       value: 
@@ -4009,6 +4029,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alert_Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2385500523304384137, guid: abad4f34d41569249a1701f87b72da89, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5868043203290972345, guid: abad4f34d41569249a1701f87b72da89, type: 3}
       propertyPath: target
       value: 
@@ -4056,7 +4080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4097140921333116952, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: PlayerSound
       objectReference: {fileID: 0}
     - target: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: m_RootOrder

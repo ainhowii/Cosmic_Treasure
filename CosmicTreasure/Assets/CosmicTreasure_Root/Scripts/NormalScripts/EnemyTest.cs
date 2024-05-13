@@ -7,8 +7,12 @@ public class EnemyTest : MonoBehaviour
 {
     //CODEAR: ARREGLAR EL RANDOM PATROL, QUE "DISPARE" BIEN, QUE ALERTE A SUS COMPAÑEROS
 
+    EnemyDetectionSystem detection;
+
+    PlayerController playerController;
+
     public NavMeshAgent agent;
-    public enum EnemyState { patroling, randomPatroling, chasing, attacking}
+    public enum EnemyState { patroling, randomPatroling, chasing, attacking, hearing}
     Vector2 dir;
     Vector2 direction;
     private Animator anim;
@@ -51,6 +55,7 @@ public class EnemyTest : MonoBehaviour
     public bool isChasing;
     public bool isShooting;
     public bool isPatroling;
+    public bool isHearing;
 
     public GameObject player;
 
@@ -85,8 +90,9 @@ public class EnemyTest : MonoBehaviour
         //HandleSpriteFlip();             //Flipear Sprites
         GetSpriteDirection();           //Cambia de Sprites segun la direccion
 
-        if (!isChasing && !isShooting) { currentState = EnemyState.patroling; }
-       // if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
+        if (!isChasing && !isShooting && !isHearing) { currentState = EnemyState.patroling; }
+        if (!isChasing && !isShooting && isHearing) { currentState = EnemyState.hearing; }
+        // if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
         if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
         if (isChasing && isShooting) { currentState = EnemyState.attacking; }
 
@@ -148,6 +154,16 @@ public class EnemyTest : MonoBehaviour
         
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerSound") && playerController.isNormal && playerController.direction != Vector2.zero)
+        {
+            Debug.Log("Enemigo detecta");
+            isHearing = true;
+            
+        }
+    }
+
     private void RandomPatrol()
     { 
             if (agent.remainingDistance <= agent.stoppingDistance) //done with path
@@ -172,7 +188,7 @@ public class EnemyTest : MonoBehaviour
                     break;
                 
             case EnemyState.chasing:
-                ChasePlayer();
+                ChasePlayer(player.transform.position);
                 break;
                 
             case EnemyState.attacking:
@@ -182,7 +198,11 @@ public class EnemyTest : MonoBehaviour
             case EnemyState.randomPatroling:
                 RandomPatrol();
                 break;
-                
+
+            case EnemyState.hearing:
+                ChasePlayer(detection.lastPosition);
+                break;
+
         }
             
     }
@@ -208,14 +228,14 @@ public class EnemyTest : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, movementPoints[i].position, speedMovement * Time.deltaTime);
     }
 
-    void ChasePlayer()
-    {
+    public void ChasePlayer(Vector2 target)
+           {
         
         LookAt(player.transform);
-        agent.SetDestination(target.position);
+        agent.SetDestination(target);
         Debug.Log("SEEN PLAYER!");
         Debug.DrawRay(fovPoint.position, dir, Color.red);
-    }
+           }
 
     void EnemyAttack()
     {
