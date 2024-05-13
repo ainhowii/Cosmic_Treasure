@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8270583227782337072}
   - component: {fileID: 5868043203290972345}
   m_Layer: 0
-  m_Name: "C\xE1mara"
+  m_Name: Alert_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   fovAngle: 90
   fovPoint: {fileID: 4125950805486332972}
   range: 8
+  rotationSpeed: 1
   target: {fileID: 0}
 --- !u!1 &5260285513532968540
 GameObject:
