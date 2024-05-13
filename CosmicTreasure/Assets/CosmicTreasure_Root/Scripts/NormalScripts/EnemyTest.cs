@@ -30,11 +30,15 @@ public class EnemyTest : MonoBehaviour
     public float range = 8;
 
     [Header("Patrol")]
+    private int i;
     [SerializeField] private float speedMovement;
     [SerializeField] private Transform[] movementPoints;
+    [SerializeField] private int startingPoint;
+    /*
     [SerializeField] private float minimumDistance;
     private int randomNumber;
     private SpriteRenderer spriteRenderer;
+    */
 
     [Header("Random Patrol")]
     public float radius;
@@ -69,14 +73,15 @@ public class EnemyTest : MonoBehaviour
         agent.updateUpAxis = false;
 
         //PATROL
-        randomNumber = Random.Range(0, movementPoints.Length);
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        transform.position = movementPoints[startingPoint].position;
+        //randomNumber = Random.Range(0, movementPoints.Length);
+        //spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         direction = target.transform.position - transform.position;
-        HandleSpriteFlip();             //Flipear Sprites
+        //HandleSpriteFlip();             //Flipear Sprites
         GetSpriteDirection();           //Cambia de Sprites segun la direccion
 
         if (!isChasing && !isShooting) { currentState = EnemyState.patroling; }
@@ -184,14 +189,22 @@ public class EnemyTest : MonoBehaviour
     private void Patrol()
     {
         agent.SetDestination(transform.position);
-        transform.position = Vector2.MoveTowards(transform.position, movementPoints[randomNumber].position, speedMovement * Time.deltaTime);  //SE MUEVE RANDOM A LOS PUNTOS
-        LookAt(movementPoints[randomNumber].transform);
-
-        if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minimumDistance)  //Patrol Estandar
+        LookAt(movementPoints[i].transform);
+        if (Vector2.Distance(transform.position, movementPoints[i].position) < 0.02f)
         {
-            randomNumber = Random.Range(0, movementPoints.Length);
-            
+            i++; //Aumenta el índice, cambia de objetivo hacia el que moverse.
+            //  ESPERA 3 SEGUNDOS ANTES DE IR AL SIGUIENTE PUNTO
+            if (i == movementPoints.Length) //Chequea si la plataforma ha llegado al último punto del array.
+            {
+
+                i = 0; //Resetea el índice para volver a empezar, la plataforma va hacia el punto 0.
+                //transform.position = movementPoints[startingPoint].position;
+
+
+            }
         }
+
+        transform.position = Vector2.MoveTowards(transform.position, movementPoints[i].position, speedMovement * Time.deltaTime);
     }
 
     void ChasePlayer()
@@ -215,6 +228,7 @@ public class EnemyTest : MonoBehaviour
         //Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
     }
 
+    /*
     private void Rotate()
     {
         if (transform.position.x < movementPoints[randomNumber].position.x)
@@ -226,6 +240,7 @@ public class EnemyTest : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+    */
 
     private void LookAt(Transform target)
     {
@@ -262,6 +277,7 @@ public class EnemyTest : MonoBehaviour
 
     }
 
+    /*
     void HandleSpriteFlip()
     {
         if (!spriteRenderer.flipX && direction.x < 0)
@@ -274,6 +290,7 @@ public class EnemyTest : MonoBehaviour
         }
 
     }
+    */
 
     void GetSpriteDirection()
     {

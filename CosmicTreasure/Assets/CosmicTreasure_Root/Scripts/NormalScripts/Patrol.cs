@@ -19,7 +19,7 @@ public class Patrol : MonoBehaviour
     {
         randomNumber = Random.Range(0, movementPoints.Length);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        Rotate();
+        //Rotate();
     }
 
     private void Update()
@@ -29,10 +29,11 @@ public class Patrol : MonoBehaviour
         if (Vector2.Distance(transform.position, movementPoints[randomNumber].position) < minimumDistance)
         {
             randomNumber = Random.Range(0, movementPoints.Length);
-            Rotate();
+            //Rotate();
         }
     }
 
+    /*
     private void Rotate()
     {
         if (transform.position.x < movementPoints[randomNumber].position.x)
@@ -44,4 +45,5 @@ public class Patrol : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+    */
 }
