@@ -138,3 +138,4 @@ MonoBehaviour:
   keyNum: 0
   defaultLayer: 
   actionLayer: 
+  actionAlpha: 0.25

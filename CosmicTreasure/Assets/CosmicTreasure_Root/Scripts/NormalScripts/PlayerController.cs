@@ -8,7 +8,7 @@ using static EnemyTest;
 
 public class PlayerController : MonoBehaviour
 {
-    //Codear: Estado de sigilo del Player, que el enemigo te siga si te oye 
+    //Codear: Que el enemigo te siga si te oye 
 
     public Rigidbody2D body;
 
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         PlayerStateManagement();
 
         if (isNormal && !isStealth) { currentState = PlayerState.normal; }
-        if (isNormal! && isStealth) { currentState = PlayerState.stealth; }
+        if (!isNormal && isStealth) { currentState = PlayerState.stealth; }
 
         if (Input.GetKeyDown(KeyCode.F) && isNormal)
         {
