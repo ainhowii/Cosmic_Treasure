@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 621684629}
   - component: {fileID: 621684628}
   - component: {fileID: 621684631}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Square (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4009,10 +4009,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alert_Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 2385500523304384137, guid: abad4f34d41569249a1701f87b72da89, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5868043203290972345, guid: abad4f34d41569249a1701f87b72da89, type: 3}
       propertyPath: target
       value: 
@@ -4030,6 +4026,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 721838132490738850, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+      propertyPath: m_Radius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087825696762927158, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2116383815}
     - target: {fileID: 2690982990591508906, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: chasing
       value: 
