@@ -151,18 +151,13 @@ public class EnemyTest : MonoBehaviour
 
             
         }
+        if (isHearing)
+        {
+            detection.lastPosition = player.transform.position;  //????????????
+        }
         
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("PlayerSound") && playerController.isNormal && playerController.direction != Vector2.zero)
-        {
-            Debug.Log("Enemigo detecta");
-            isHearing = true;
-            
-        }
-    }
 
     private void RandomPatrol()
     { 

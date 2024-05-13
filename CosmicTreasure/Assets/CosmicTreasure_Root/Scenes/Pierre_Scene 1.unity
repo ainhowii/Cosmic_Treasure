@@ -4052,7 +4052,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 721838132490738850, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: m_Radius
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1087825696762927158, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: player
