@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2385500523304384137}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.018586649, w: 0.9998273}
   m_LocalPosition: {x: 0.26, y: -2.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4125950805486332972}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.13}
 --- !u!212 &8270583227782337072
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,7 +102,6 @@ MonoBehaviour:
   fovPoint: {fileID: 4125950805486332972}
   range: 8
   rotationSpeed: 1
-  target: {fileID: 0}
 --- !u!1 &5260285513532968540
 GameObject:
   m_ObjectHideFlags: 0

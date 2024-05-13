@@ -5,27 +5,36 @@ using UnityEngine;
 public class FOVPoint : MonoBehaviour
 {
     public float fovAngle = 90f;
-    public Transform fovPoint;
+    public GameObject fovPoint;
     public float range = 8;
 
-    public float rotationSpeed = 45f;  // Velocidad de rotación 
+    public float rotationSpeed = .15f;  // Velocidad de rotación 
 
-    public Transform target;
+   
+
+
 
     private void Start()
     {
-        StartCoroutine(RotateAndWait());
+        //StartCoroutine(RotateAndWait());
     }
 
     private void Update()
     {
 
+        
+        transform.Rotate(0, 0, rotationSpeed);
+        /*if (transform.rotation.z <= 0)
+        {
+            transform.Rotate(0, 0, rotationSpeed);
+        }
+        else if (transform.rotation.z > 90)
+        {
+            transform.Rotate(0, 0, -rotationSpeed);
+        }*/
         Vector2 dir = Vector2.zero;
-        float singleStep = rotationSpeed * Time.deltaTime;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, dir, singleStep, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
-        float angle = Vector3.Angle(dir, fovPoint.up);
-        RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
+        float angle = Vector3.Angle(dir, fovPoint.transform.up);
+        RaycastHit2D r = Physics2D.Raycast(fovPoint.transform.position, dir, range);
 
         if (angle < fovAngle / 2)  //Si el angulo es menor que 90 /2 ?????
         {
@@ -33,7 +42,7 @@ public class FOVPoint : MonoBehaviour
             {
                 // WE SPOTTED THE PLAYER
                 Debug.Log("SEEN!");
-                Debug.DrawRay(fovPoint.position, dir, Color.red);
+                Debug.DrawRay(fovPoint.transform.position, dir, Color.red);
             }
             else
             {
@@ -41,6 +50,7 @@ public class FOVPoint : MonoBehaviour
             }
         }
     }
+
 
     IEnumerator RotateAndWait()   //Que sea continuo en loop
     {
