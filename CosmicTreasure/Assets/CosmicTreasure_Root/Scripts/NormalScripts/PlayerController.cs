@@ -8,8 +8,6 @@ using static EnemyTest;
 
 public class PlayerController : MonoBehaviour
 {
-    //Codear: Que el enemigo te siga si te oye 
-
     public Rigidbody2D body;
 
     public SpriteRenderer spriteRenderer;
@@ -48,7 +46,7 @@ public class PlayerController : MonoBehaviour
     //Variable para la mecanica del sonido
     private Transform enemy;
     public float lineOfSite;
-    EnemyTest chasing;
+    public EnemyTest chasing;
 
     [SerializeField] private UI_Inventory uiInventory;
     [SerializeField] private Inventory inventory;
@@ -92,8 +90,10 @@ public class PlayerController : MonoBehaviour
     {
         uiInventory.SetInventory(inventory);
 
+        isNormal = true;
+
         //currentState = PlayerState.normal;
-        //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
     private void Update()
@@ -120,13 +120,13 @@ public class PlayerController : MonoBehaviour
             isStealth = false;
         }
 
-        /*
-        float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);               //Cuando el enemigo entra en la zona del player, pasa a chasing
-        if (distanceFromEnemy < lineOfSite)
+        
+        float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);    //Cuando el enemigo entra en la zona del player, pasa a chasing
+        if (distanceFromEnemy < lineOfSite && isNormal && direction != Vector2.zero)
         {
-            chasing.isChasing = true;
+            chasing.isChasing = true;   //Que lo haga solo si te estás moviendo en modo normal
         }
-        */
+        
 
         //HandleSpriteFlip();
         //SetSprite();
