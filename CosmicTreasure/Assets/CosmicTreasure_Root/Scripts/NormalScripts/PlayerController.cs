@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    [SerializeField] Collider2D[] enemCol;
+    [SerializeField]LayerMask enemyLayer;
+
     public enum PlayerState { normal, stealth }
 
     [Header("States Player")]
@@ -120,12 +123,28 @@ public class PlayerController : MonoBehaviour
             isStealth = false;
         }
 
+        /*
+        enemCol = Physics2D.OverlapCircleAll(transform.position, lineOfSite, enemyLayer);
+
+        for (int i = 0; i < enemCol.Length; i++)
+        {
+            EnemyTest enemy = enemCol[i].GetComponent<EnemyTest>();
+            if (enemy != null)
+            {
+                enemy.target = this.gameObject.transform;
+            }
+
+        }
+        */
         
+        
+        /*
         float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);    //Cuando el enemigo entra en la zona del player, pasa a chasing
         if (distanceFromEnemy < lineOfSite && isNormal && direction != Vector2.zero)
         {
-            chasing.isChasing = true;   //Que lo haga solo si te estás moviendo en modo normal
+            chasing.isChasing = true;   // NO LO HACE SI HAY MAS DE UN ENEMIGO
         }
+        */
         
 
         //HandleSpriteFlip();
