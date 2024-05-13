@@ -28,6 +28,7 @@ public class EnemyTest : MonoBehaviour
     public float fovAngle = 90f;
     public Transform fovPoint;
     public float range = 8;
+    public LayerMask playerLayer;
 
     [Header("Patrol")]
     private int i;
@@ -96,7 +97,7 @@ public class EnemyTest : MonoBehaviour
         //RAYCAST
         dir = target.position - transform.position;
         float angle = Vector3.Angle(dir, fovPoint.up);
-        RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range);
+        RaycastHit2D r = Physics2D.Raycast(fovPoint.position, dir, range, playerLayer);
 
         if (angle < fovAngle / 2)
         {
