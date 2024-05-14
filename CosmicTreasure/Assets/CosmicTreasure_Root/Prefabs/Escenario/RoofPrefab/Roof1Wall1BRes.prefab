@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3803840980070213892}
   - component: {fileID: 7359395218125900489}
   - component: {fileID: 2496156597531317057}
+  - component: {fileID: 7670079962883946654}
   m_Layer: 0
   m_Name: Roof1Wall1BRes
   m_TagString: Untagged
@@ -137,6 +138,22 @@ PolygonCollider2D:
       - {x: 7.04504, y: -1.2690592}
       - {x: 5.610548, y: -1.0795705}
   m_UseDelaunayMesh: 0
+--- !u!114 &7670079962883946654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855309660194487121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8458927140683609476
 GameObject:
   m_ObjectHideFlags: 0
