@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
     public List<Sprite> seCSprites;
     public List<Sprite> sCSprites;
 
+    [Header("Player Stats")]
+    public float speedX = 20f;
+    public float speedY = 3f;
+
     public float walkSpeed;
 
     public float walkSpeedStealth;
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
         //body.velocity = direction * walkSpeed;
@@ -293,6 +298,15 @@ public class PlayerController : MonoBehaviour
     private void Normal()
     {
         Debug.Log("Estoy en normal");
+        /*
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalMovement * speedX * Time.deltaTime);
+
+        float verticalMovement = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.up * verticalMovement * speedY * Time.deltaTime);
+        body.velocity = direction * speedX;
+        body.velocity = direction * speedY;
+        */
         body.velocity = direction * walkSpeed;
         HandleSpriteFlip();
         SetSprite();
