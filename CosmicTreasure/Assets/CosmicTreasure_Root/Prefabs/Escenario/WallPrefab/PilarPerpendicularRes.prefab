@@ -177,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7471936036083469919}
   m_LocalRotation: {x: -0, y: -0, z: 0.258819, w: 0.9659259}
-  m_LocalPosition: {x: 0.73, y: 0.4, z: 0.08915897}
+  m_LocalPosition: {x: -0.73, y: 0.34, z: 0.08915897}
   m_LocalScale: {x: -0.90000004, y: 0.90000004, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -201,7 +201,7 @@ MonoBehaviour:
   objectVector2: {x: 0, y: 0}
   pointToPlayer: {x: 0, y: 0}
   playerDistance: 0
-  maxDistance: 3
+  maxDistance: 6
   keyNum: 0
   defaultLayer: 
   actionLayer: 

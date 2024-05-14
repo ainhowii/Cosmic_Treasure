@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3803840980070213892}
   - component: {fileID: 7359395218125900489}
+  - component: {fileID: 2496156597531317057}
   m_Layer: 0
   m_Name: Roof1Wall1BRes
   m_TagString: Untagged
@@ -85,6 +86,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &2496156597531317057
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2855309660194487121}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 17.4, y: 17.71}
+    newSize: {x: 17.4, y: 17.71}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -6.885248, y: -7.3332205}
+      - {x: -8.723614, y: -8.308313}
+      - {x: -8.758591, y: -8.6286335}
+      - {x: -7.5026846, y: -8.613949}
+      - {x: 7.04504, y: -1.2690592}
+      - {x: 5.610548, y: -1.0795705}
+  m_UseDelaunayMesh: 0
 --- !u!1 &8458927140683609476
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +187,7 @@ MonoBehaviour:
   pointToPlayer: {x: 0, y: 0}
   playerDistance: 0
   maxDistance: 0
-  keyNum: 0
+  keyNum: 2
   defaultLayer: 
   actionLayer: 
   actionAlpha: 0.25
