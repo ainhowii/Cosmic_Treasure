@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c335b8af4c2fdf446bea82dd7e2fa39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2690982990591508906}
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &8629839868419145003
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +560,7 @@ MonoBehaviour:
   lineOfSite: 4.57
   chasing: {fileID: 0}
   uiInventory: {fileID: 0}
+  direction: {x: 0, y: 0}
 --- !u!61 &8517994714855935272
 BoxCollider2D:
   m_ObjectHideFlags: 0

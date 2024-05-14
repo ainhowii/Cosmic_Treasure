@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         isNormal = true;
 
         //currentState = PlayerState.normal;
-        enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
 
     private void Update()

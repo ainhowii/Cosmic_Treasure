@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 1078622911528510892}
   - component: {fileID: -1801447180874530132}
   - component: {fileID: 58042512896475458}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyTest
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ Transform:
   - {fileID: 5563741171400073439}
   - {fileID: 6185767759514145320}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5487950331856937252
 SpriteRenderer:
@@ -210,7 +210,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7157609597813601379}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -235,7 +235,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.056495667, y: 0.7005461}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -246,7 +246,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0169218, y: 1.6779479}
   m_EdgeRadius: 0
 --- !u!114 &1078622911528510892
 MonoBehaviour:
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: -1801447180874530132}
+  radiusAlert: 0
   fireRate: 1
   bullet: {fileID: 7265355007015163609, guid: 3dd63978d2379824e8e4189cea5d1cac, type: 3}
   bulletParent: {fileID: 2999779645531721337}
@@ -270,13 +271,16 @@ MonoBehaviour:
   fovAngle: 90
   fovPoint: {fileID: 6185767759514145320}
   range: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
   speedMovement: 2
   movementPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  minimumDistance: 0.2
+  startingPoint: 1
   radius: 5
   centrePoint: {fileID: 0}
   isDetected: 0
@@ -284,10 +288,11 @@ MonoBehaviour:
   isChasing: 0
   isShooting: 0
   isPatroling: 0
-  player: {fileID: 0}
-  playerD: {fileID: 0}
-  target: {fileID: 0}
-  controller: {fileID: 0}
+  isHearing: 0
+  player: {fileID: 8629839868419145003, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+  playerD: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+  target: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+  controller: {fileID: 2690982990591508906, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
 --- !u!195 &-1801447180874530132
 NavMeshAgent:
   m_ObjectHideFlags: 0
