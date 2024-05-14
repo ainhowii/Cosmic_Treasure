@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5058705874885390046}
   - component: {fileID: 3215159516862229121}
   - component: {fileID: 1695326617838898907}
+  - component: {fileID: 8181581682218021046}
   m_Layer: 0
   m_Name: BoxMoveParalRes
   m_TagString: Untagged
@@ -158,6 +159,22 @@ PolygonCollider2D:
       - {x: 0.14342847, y: -3.504003}
       - {x: 3.1931095, y: -1.9092555}
   m_UseDelaunayMesh: 0
+--- !u!114 &8181581682218021046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472408543607123111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1311381741596403517
 GameObject:
   m_ObjectHideFlags: 0
