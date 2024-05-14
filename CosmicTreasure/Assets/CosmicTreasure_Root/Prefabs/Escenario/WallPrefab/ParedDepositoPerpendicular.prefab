@@ -66,8 +66,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0352, y: -1.6805999, z: 0}
-    m_Extent: {x: 1.8571, y: 1.7772, z: 0}
+    m_Center: {x: 0.025299966, y: -1.66985, z: 0}
+    m_Extent: {x: 1.8597, y: 1.77535, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1973268039438153471}
   - component: {fileID: 3898697353693091104}
   - component: {fileID: 2243612242340411372}
+  - component: {fileID: 5562850761588512950}
   m_Layer: 0
   m_Name: ParedDepositoPerpendicular
   m_TagString: Untagged
@@ -225,3 +226,19 @@ PolygonCollider2D:
       - {x: 2.7414799, y: 0.7177764}
       - {x: 2.6179593, y: 0.81661904}
   m_UseDelaunayMesh: 0
+--- !u!114 &5562850761588512950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6203363570978396533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 6501936928468788482}
   - component: {fileID: 5287121523353364541}
   - component: {fileID: 4492294801150396543}
+  - component: {fileID: 4626900600831332532}
   m_Layer: 0
   m_Name: Roof2_WallRes
   m_TagString: Untagged
@@ -191,3 +192,19 @@ PolygonCollider2D:
       - {x: -6.1817307, y: -0.37474155}
       - {x: 4.5734572, y: -5.810963}
   m_UseDelaunayMesh: 0
+--- !u!114 &4626900600831332532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032672670987485892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
