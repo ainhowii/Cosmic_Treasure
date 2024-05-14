@@ -6,8 +6,8 @@ public class RedOpenSystem : MonoBehaviour
 {
     Animator anim;
     Collider2D col;
-    [SerializeField] GameObject roof;
-    SpriteRenderer shapeRenderer;
+    //[SerializeField] GameObject roof;
+    //SpriteRenderer shapeRenderer;
     [SerializeField] GameObject closeCol;
     [SerializeField] int keyToOpen;
 
@@ -17,7 +17,7 @@ public class RedOpenSystem : MonoBehaviour
     {
         anim = gameObject.GetComponentInParent<Animator>();
         col = gameObject.GetComponent<Collider2D>();
-        shapeRenderer = roof.GetComponent<SpriteRenderer>();
+        //shapeRenderer = roof.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class RedOpenSystem : MonoBehaviour
         {
             anim.Play("DoorRedOpenAnim");
             closeCol.GetComponent<Collider2D>().enabled = false;
-            shapeRenderer.color = new Color(1f, 1f, 1f, 0f);         //Apaga el techo
+            //shapeRenderer.color = new Color(1f, 1f, 1f, 0f);         //Apaga el techo
 
 
         }
