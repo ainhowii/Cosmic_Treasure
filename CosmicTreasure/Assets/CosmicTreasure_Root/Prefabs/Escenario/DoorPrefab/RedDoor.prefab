@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 38312027431300882}
   - component: {fileID: 2718533967262838013}
   - component: {fileID: 39201850433416656}
+  - component: {fileID: 5014922892634522839}
   m_Layer: 0
   m_Name: RedDoor
   m_TagString: Untagged
@@ -251,6 +252,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5014922892634522839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172090476714483114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1964176094103197177
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +278,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8813997398183451215}
   - component: {fileID: 8272386884542159769}
-  - component: {fileID: 166251165010549901}
   - component: {fileID: 365219527152992070}
   m_Layer: 0
   m_Name: OpenSystem
@@ -334,21 +350,6 @@ PolygonCollider2D:
       - {x: -2.6777465, y: 0.24651927}
       - {x: 0.12773876, y: 1.6601036}
   m_UseDelaunayMesh: 0
---- !u!114 &166251165010549901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964176094103197177}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2996fb9663cd0244fa3180d4f1d13aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roof: {fileID: 0}
-  closeCol: {fileID: 80117172655117897}
-  keyToOpen: 3
 --- !u!114 &365219527152992070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1730b95fe838f794aaeed0a8c952e06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roof: {fileID: 0}
   closeCol: {fileID: 80117172655117897}
   keyToOpen: 3
 --- !u!1 &2360359746009899869
@@ -598,8 +598,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -629426429
-  m_SortingLayer: 5
+  m_SortingLayerID: 1847952745
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 459de1cb81dfc8f418c54a3a48bcbb43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

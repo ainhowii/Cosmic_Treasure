@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8546047026037470042}
   - component: {fileID: 5648216125982279481}
   - component: {fileID: 2167954532370437699}
+  - component: {fileID: 4500942069581455146}
   m_Layer: 0
   m_Name: PilarPerpendicularRes
   m_TagString: Untagged
@@ -135,6 +136,22 @@ PolygonCollider2D:
       - {x: 0.017764822, y: 0.7451242}
       - {x: 0.7644759, y: 0.38622642}
   m_UseDelaunayMesh: 0
+--- !u!114 &4500942069581455146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910086666307719774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &7471936036083469919
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7471936036083469919}
   m_LocalRotation: {x: -0, y: -0, z: 0.258819, w: 0.9659259}
-  m_LocalPosition: {x: 0.73, y: 0.4, z: 0.08915897}
+  m_LocalPosition: {x: -0.73, y: 0.34, z: 0.08915897}
   m_LocalScale: {x: -0.90000004, y: 0.90000004, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,7 +201,7 @@ MonoBehaviour:
   objectVector2: {x: 0, y: 0}
   pointToPlayer: {x: 0, y: 0}
   playerDistance: 0
-  maxDistance: 3
+  maxDistance: 6
   keyNum: 0
   defaultLayer: 
   actionLayer: 

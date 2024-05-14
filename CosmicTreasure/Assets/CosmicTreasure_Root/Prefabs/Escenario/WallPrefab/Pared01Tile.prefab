@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5972374840261249961}
   - component: {fileID: 3900561658000048503}
   - component: {fileID: 1243461682208596887}
+  - component: {fileID: 2248385949719421487}
   m_Layer: 0
   m_Name: Pared01Tile
   m_TagString: Untagged
@@ -135,6 +136,22 @@ PolygonCollider2D:
       - {x: -3.0502033, y: -2.3793454}
       - {x: 1.4609814, y: -4.70395}
   m_UseDelaunayMesh: 0
+--- !u!114 &2248385949719421487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2735134536280829036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &5125318084885401304
 GameObject:
   m_ObjectHideFlags: 0

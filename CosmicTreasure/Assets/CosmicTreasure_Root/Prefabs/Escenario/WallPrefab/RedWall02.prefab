@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6585798556215820313}
   - component: {fileID: 7204192373265642746}
   - component: {fileID: 2887758902803529010}
+  - component: {fileID: 7093044848254150034}
   m_Layer: 0
   m_Name: RedWall02
   m_TagString: Untagged
@@ -135,3 +136,19 @@ PolygonCollider2D:
       - {x: 5.246847, y: 2.6133747}
       - {x: 4.4852357, y: 2.7977471}
   m_UseDelaunayMesh: 0
+--- !u!114 &7093044848254150034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370375683117457128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

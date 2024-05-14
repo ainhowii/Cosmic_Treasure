@@ -6,8 +6,8 @@ public class YellowOpenSystem : MonoBehaviour
 {
     Animator anim;
     Collider2D col;
-    [SerializeField] GameObject roof;
-    SpriteRenderer shapeRenderer;
+    //[SerializeField] GameObject roof;
+    //SpriteRenderer shapeRenderer;
     [SerializeField] GameObject closeCol;
     [SerializeField] int keyToOpen;
 
@@ -17,7 +17,7 @@ public class YellowOpenSystem : MonoBehaviour
     {
         anim = gameObject.GetComponentInParent<Animator>();
         col = gameObject.GetComponent<Collider2D>();
-        shapeRenderer = roof.GetComponent<SpriteRenderer>();
+        //shapeRenderer = roof.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class YellowOpenSystem : MonoBehaviour
         if (collision.CompareTag("Player") && GameManager.Instance.keyChain[keyToOpen] == true)
         {
             anim.Play("DoorYellowOpenAnim");
-            shapeRenderer.color = new Color(1f, 1f, 1f, 0f);         //Apaga el techo
+            //shapeRenderer.color = new Color(1f, 1f, 1f, 0f);         //Apaga el techo
             closeCol.GetComponent<Collider2D>().enabled = false;
 
         }

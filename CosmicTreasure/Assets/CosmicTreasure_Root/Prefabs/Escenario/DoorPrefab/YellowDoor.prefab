@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 38312027431300882}
   - component: {fileID: 2718533967262838013}
   - component: {fileID: 39201850433416656}
+  - component: {fileID: 6245756728511822824}
   m_Layer: 0
   m_Name: YellowDoor
   m_TagString: Untagged
@@ -251,6 +252,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6245756728511822824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172090476714483114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1964176094103197177
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +278,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8813997398183451215}
   - component: {fileID: 8272386884542159769}
-  - component: {fileID: 7647084243572763872}
   - component: {fileID: 166251165010549901}
   m_Layer: 0
   m_Name: OpenSystem
@@ -334,21 +350,6 @@ PolygonCollider2D:
       - {x: -2.6777465, y: 0.24651927}
       - {x: 0.12773876, y: 1.6601036}
   m_UseDelaunayMesh: 0
---- !u!114 &7647084243572763872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964176094103197177}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94b14cebeaf8d8f4b980b6611bac4125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roof: {fileID: 0}
-  closeCol: {fileID: 80117172655117897}
-  keyToOpen: 1
 --- !u!114 &166251165010549901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2996fb9663cd0244fa3180d4f1d13aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roof: {fileID: 0}
   closeCol: {fileID: 80117172655117897}
   keyToOpen: 2
 --- !u!1 &2360359746009899869

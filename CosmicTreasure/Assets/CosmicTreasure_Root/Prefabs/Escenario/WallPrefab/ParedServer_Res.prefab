@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3906859960850743974}
   - component: {fileID: 744333176195304085}
   - component: {fileID: 8047067730507494161}
+  - component: {fileID: 9061009839854401299}
   m_Layer: 0
   m_Name: ParedServer_Res
   m_TagString: Untagged
@@ -212,3 +213,19 @@ PolygonCollider2D:
       - {x: 7.4864917, y: 3.730727}
       - {x: 6.648843, y: 4.038941}
   m_UseDelaunayMesh: 0
+--- !u!114 &9061009839854401299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6915503857799952950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
