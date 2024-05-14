@@ -17,6 +17,9 @@ public class EnemyTest : MonoBehaviour
     Vector2 direction;
     private Animator anim;
 
+    [Header("Alert Enemies")]          //Que el enemigo alerte a sus compañeros
+    public float radiusAlert;
+
     [Header("Enemy Attributes")]
     public float fireRate = 1f;  //PARA QUE NO TE TIRE UNA RAFAGA DE TIROS
     private float atkCD;  //CoolDown
@@ -109,6 +112,8 @@ public class EnemyTest : MonoBehaviour
         {
             if (r.collider.CompareTag("Player"))
             {
+                AlertEnemies();
+                /*
                 isDetected = true;
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -116,6 +121,7 @@ public class EnemyTest : MonoBehaviour
                 {
                     
                 }
+                */
 
                 /*
                 if (isDetected && !r.collider.CompareTag("Player"))  //?????????
@@ -156,6 +162,24 @@ public class EnemyTest : MonoBehaviour
             detection.lastPosition = player.transform.position;  //????????????
         }
         
+    }
+
+    private void AlertEnemies()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radiusAlert);
+        foreach (Collider col in hitColliders)
+        {
+            if (col.gameObject != gameObject)
+            {
+                isChasing = true;
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()      //Gizmo del radio del enemigo
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusAlert);
     }
 
 
