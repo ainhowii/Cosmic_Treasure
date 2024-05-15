@@ -219,7 +219,7 @@ public class EnemyTest : MonoBehaviour
                 break;
 
             case EnemyState.hearing:
-                ChasePlayer(detection.lastPosition);
+                ChasePlayerSound(detection.lastPosition);
                 break;
 
         }
@@ -248,20 +248,34 @@ public class EnemyTest : MonoBehaviour
     }
 
     public void ChasePlayer(Vector2 target)
-           {
+    {
+        isPatroling = false;
         
         LookAt(player.transform);
         agent.SetDestination(target);
         Debug.Log("SEEN PLAYER!");
         //Debug.DrawRay(fovPoint.position, dir, Color.red);
-           }
+    }
+
+    public void ChasePlayerSound(Vector2 target)
+    {
+
+        LookAt(player.transform);
+        agent.SetDestination(target);
+        Debug.Log("SEEN PLAYER!");
+        //Debug.DrawRay(fovPoint.position, dir, Color.red);
+    }
 
     void EnemyAttack()
     {
+        isChasing = false;
+        isPatroling = false;
+        isHearing = false;
         agent.SetDestination(transform.position);
         Debug.Log("ENTRA TIRO");
         LookAt(player.transform);
-        controller.walkSpeed = 0f;      
+        controller.walkSpeed = 0f;
+        controller.walkSpeedStealth = 0f;
         //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;          //QUE EL PLAYER PASE A ESTATICO
         //atkCD = fireRate;
         //GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
