@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
-        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")/2).normalized;
 
         //body.velocity = direction * walkSpeed;
 
