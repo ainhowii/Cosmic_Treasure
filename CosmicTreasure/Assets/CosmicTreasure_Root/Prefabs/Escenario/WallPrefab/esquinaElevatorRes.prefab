@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2519232407018745558}
   - component: {fileID: 6225866571354306333}
   - component: {fileID: 5999826584976806441}
+  - component: {fileID: 5430732376753619372}
   m_Layer: 0
   m_Name: esquinaElevatorRes
   m_TagString: Untagged
@@ -136,3 +137,19 @@ PolygonCollider2D:
       - {x: 2.4613762, y: -2.7801957}
       - {x: 0.4841118, y: -1.5874994}
   m_UseDelaunayMesh: 0
+--- !u!114 &5430732376753619372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714236563869402094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
