@@ -30,7 +30,7 @@ public class EnemyDetectionSystem : MonoBehaviour
             EnemyTest localEnemy = collision.gameObject.GetComponent<EnemyTest>();
             localEnemy.isHearing = true;
             localEnemy.isPatroling = false;
-            localEnemy.ChasePlayer(lastPosition);
+            localEnemy.ChasePlayerSound(lastPosition);
             localEnemy.agent.SetDestination(lastPosition);
         }
     }

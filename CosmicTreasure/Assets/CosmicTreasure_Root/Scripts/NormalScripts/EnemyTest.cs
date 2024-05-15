@@ -72,7 +72,7 @@ public class EnemyTest : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-
+        
         currentState = EnemyState.patroling;
 
         isDetected = false;
@@ -108,6 +108,7 @@ public class EnemyTest : MonoBehaviour
         if(isChasing && isShooting) { currentState = EnemyState.attacking; }
         if(isChasing && isHearing && !isShooting) { currentState = EnemyState.chasing; }
 
+
         EnemyStateManagement();
 
         float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);  //Distancia con el Player
@@ -121,7 +122,7 @@ public class EnemyTest : MonoBehaviour
         {
             if (r.collider.CompareTag("Player"))
             {
-                AlertEnemies();
+                //AlertEnemies();
                 /*
                 isDetected = true;
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -260,7 +261,7 @@ public class EnemyTest : MonoBehaviour
     public void ChasePlayer(Vector2 target)
     {
         isPatroling = false;
-        
+        //Aquí NO puede ir isHearing = false
         LookAt(player.transform);
         agent.SetDestination(target);
         Debug.Log("SEEN PLAYER!");
@@ -269,7 +270,7 @@ public class EnemyTest : MonoBehaviour
 
     public void ChasePlayerSound(Vector2 target)
     {
-
+        isPatroling = false;
         LookAt(player.transform);
         agent.SetDestination(target);
         Debug.Log("HEAR PLAYER!");
