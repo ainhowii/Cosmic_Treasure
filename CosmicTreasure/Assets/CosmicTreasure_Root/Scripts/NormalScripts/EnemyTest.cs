@@ -253,7 +253,7 @@ public class EnemyTest : MonoBehaviour
         LookAt(player.transform);
         agent.SetDestination(target);
         Debug.Log("SEEN PLAYER!");
-        Debug.DrawRay(fovPoint.position, dir, Color.red);
+        //Debug.DrawRay(fovPoint.position, dir, Color.red);
            }
 
     void EnemyAttack()
