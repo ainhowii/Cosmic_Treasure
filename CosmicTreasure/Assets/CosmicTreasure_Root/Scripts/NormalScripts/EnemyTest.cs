@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyTest : MonoBehaviour
 {
     //CODEAR: ARREGLAR EL RANDOM PATROL, QUE "DISPARE" BIEN, QUE ALERTE A SUS COMPAÑEROS, QUE USE EL PATHFINDING PARA EL PATROL NORMAL
+    // QUE ESPERE 3 SEG ENTRE PUNTO Y PUNTO EN EL PATROL, ARREGLAR LOS ESTADOS CUANDO HAY MÁS DE UN ENEMIGO
 
     EnemyDetectionSystem detection;
 
@@ -94,10 +95,11 @@ public class EnemyTest : MonoBehaviour
         GetSpriteDirection();           //Cambia de Sprites segun la direccion
 
         if (!isChasing && !isShooting && !isHearing) { currentState = EnemyState.patroling; }
-        if (!isChasing && !isShooting && isHearing) { currentState = EnemyState.hearing; }
+        if (!isShooting && isHearing) { currentState = EnemyState.hearing; }
         // if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
         if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
         if (isChasing && isShooting) { currentState = EnemyState.attacking; }
+        //if(isChasing && isHearing) { currentState = EnemyState.chasing; }
 
         EnemyStateManagement();
 
@@ -159,7 +161,7 @@ public class EnemyTest : MonoBehaviour
         }
         if (isHearing)
         {
-            detection.lastPosition = player.transform.position;  //????????????
+            detection.lastPosition = player.transform.position;
         }
         
     }
@@ -219,7 +221,7 @@ public class EnemyTest : MonoBehaviour
                 break;
 
             case EnemyState.hearing:
-                ChasePlayer(detection.lastPosition);
+                ChasePlayerSound(detection.lastPosition);
                 break;
 
         }
@@ -228,16 +230,17 @@ public class EnemyTest : MonoBehaviour
 
     private void Patrol()
     {
+        //agent.SetDestination(movementPoints[0]);
         agent.SetDestination(transform.position);
         LookAt(movementPoints[i].transform);
         if (Vector2.Distance(transform.position, movementPoints[i].position) < 0.02f)
         {
             i++; //Aumenta el índice, cambia de objetivo hacia el que moverse.
             //  ESPERA 3 SEGUNDOS ANTES DE IR AL SIGUIENTE PUNTO
-            if (i == movementPoints.Length) //Chequea si la plataforma ha llegado al último punto del array.
+            if (i == movementPoints.Length) 
             {
 
-                i = 0; //Resetea el índice para volver a empezar, la plataforma va hacia el punto 0.
+                i = 0;
                 //transform.position = movementPoints[startingPoint].position;
 
 
@@ -248,20 +251,34 @@ public class EnemyTest : MonoBehaviour
     }
 
     public void ChasePlayer(Vector2 target)
-           {
+    {
+        isPatroling = false;
         
         LookAt(player.transform);
         agent.SetDestination(target);
         Debug.Log("SEEN PLAYER!");
-        Debug.DrawRay(fovPoint.position, dir, Color.red);
-           }
+        //Debug.DrawRay(fovPoint.position, dir, Color.red);
+    }
+
+    public void ChasePlayerSound(Vector2 target)
+    {
+
+        LookAt(player.transform);
+        agent.SetDestination(target);
+        Debug.Log("HEAR PLAYER!");
+        //Debug.DrawRay(fovPoint.position, dir, Color.red);
+    }
 
     void EnemyAttack()
     {
-        agent.SetDestination(transform.position);
         Debug.Log("ENTRA TIRO");
+        isChasing = false;
+        isPatroling = false;
+        isHearing = false;
+        agent.SetDestination(transform.position);
         LookAt(player.transform);
-        controller.walkSpeed = 0f;      
+        controller.walkSpeed = 0f;
+        controller.walkSpeedStealth = 0f;
         //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;          //QUE EL PLAYER PASE A ESTATICO
         //atkCD = fireRate;
         //GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);

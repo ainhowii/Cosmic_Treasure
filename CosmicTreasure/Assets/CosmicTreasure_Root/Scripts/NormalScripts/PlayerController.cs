@@ -8,6 +8,8 @@ using static EnemyTest;
 
 public class PlayerController : MonoBehaviour
 {
+    //CODEAR: QUE LA VELOCIDAD EN Y SEA LA MITAD QUE EN X
+
     public Rigidbody2D body;
 
     public SpriteRenderer spriteRenderer;
