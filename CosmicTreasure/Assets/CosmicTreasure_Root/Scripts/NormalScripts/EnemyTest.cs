@@ -107,7 +107,7 @@ public class EnemyTest : MonoBehaviour
         if(!isChasing && !isShooting && isHearing) { currentState = EnemyState.hearing; }
         if(isChasing && isShooting) { currentState = EnemyState.attacking; }
         if(isChasing && isHearing && !isShooting) { currentState = EnemyState.chasing; }
-        if (isChasing && isHearing && isShooting) { currentState = EnemyState.chasing; }
+        if (isChasing && isHearing && isShooting) { currentState = EnemyState.attacking; }
 
 
         EnemyStateManagement();
