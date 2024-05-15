@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyTest : MonoBehaviour
 {
     //CODEAR: ARREGLAR EL RANDOM PATROL, QUE "DISPARE" BIEN, QUE ALERTE A SUS COMPAÑEROS, QUE USE EL PATHFINDING PARA EL PATROL NORMAL
+    // QUE ESPERE 3 SEG ENTRE PUNTO Y PUNTO EN EL PATROL, ARREGLAR LOS ESTADOS CUANDO HAY MÁS DE UN ENEMIGO
 
     EnemyDetectionSystem detection;
 
@@ -159,7 +160,7 @@ public class EnemyTest : MonoBehaviour
         }
         if (isHearing)
         {
-            detection.lastPosition = player.transform.position;  //????????????
+            detection.lastPosition = player.transform.position;
         }
         
     }
@@ -228,16 +229,17 @@ public class EnemyTest : MonoBehaviour
 
     private void Patrol()
     {
+        //agent.SetDestination(movementPoints[0]);
         agent.SetDestination(transform.position);
         LookAt(movementPoints[i].transform);
         if (Vector2.Distance(transform.position, movementPoints[i].position) < 0.02f)
         {
             i++; //Aumenta el índice, cambia de objetivo hacia el que moverse.
             //  ESPERA 3 SEGUNDOS ANTES DE IR AL SIGUIENTE PUNTO
-            if (i == movementPoints.Length) //Chequea si la plataforma ha llegado al último punto del array.
+            if (i == movementPoints.Length) 
             {
 
-                i = 0; //Resetea el índice para volver a empezar, la plataforma va hacia el punto 0.
+                i = 0;
                 //transform.position = movementPoints[startingPoint].position;
 
 
@@ -268,11 +270,11 @@ public class EnemyTest : MonoBehaviour
 
     void EnemyAttack()
     {
+        Debug.Log("ENTRA TIRO");
         isChasing = false;
         isPatroling = false;
         isHearing = false;
         agent.SetDestination(transform.position);
-        Debug.Log("ENTRA TIRO");
         LookAt(player.transform);
         controller.walkSpeed = 0f;
         controller.walkSpeedStealth = 0f;
