@@ -94,12 +94,19 @@ public class EnemyTest : MonoBehaviour
         //HandleSpriteFlip();             //Flipear Sprites
         GetSpriteDirection();           //Cambia de Sprites segun la direccion
 
+        /*
         if (!isChasing && !isShooting && !isHearing) { currentState = EnemyState.patroling; }
         if (!isShooting && isHearing) { currentState = EnemyState.hearing; }
         // if (!isChasing && !isShooting && !isPatroling) { currentState = EnemyState.randomPatroling; }
         if (isChasing && !isShooting) { currentState = EnemyState.chasing; }
         if (isChasing && isShooting) { currentState = EnemyState.attacking; }
-        //if(isChasing && isHearing) { currentState = EnemyState.chasing; }
+        */
+
+        if (!isChasing && !isShooting && !isHearing) { currentState = EnemyState.patroling; }   //Normal
+        if(isChasing && !isShooting) { currentState = EnemyState.chasing; }                     //Si esta persiguiendo, no en distanciaShoot
+        if(!isChasing && !isShooting && isHearing) { currentState = EnemyState.hearing; }
+        if(isChasing && isShooting) { currentState = EnemyState.attacking; }
+        if(isChasing && isHearing && !isShooting) { currentState = EnemyState.chasing; }
 
         EnemyStateManagement();
 
