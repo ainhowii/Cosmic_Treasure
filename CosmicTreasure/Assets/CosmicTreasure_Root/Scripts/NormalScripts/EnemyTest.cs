@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -121,54 +122,37 @@ public class EnemyTest : MonoBehaviour
 
         if (angle < fovAngle / 2)
         {
-            if (r.collider.CompareTag("Player"))
+            if(r.collider != null)
             {
-                Debug.Log("TE HE VISTO CABRÓN");
-                
-
-                //AlertEnemies();
-                /*
-                isDetected = true;
-                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-                foreach (GameObject enemy in enemies)
+                if (r.collider.gameObject.CompareTag("Player"))
                 {
-                    
-                }
-                */
+                    Debug.Log("TE HE VISTO CABRÓN");
 
-                /*
-                if (isDetected && !r.collider.CompareTag("Player"))  //?????????
-                {
-                    isChasing = false;
-                    isShooting = false;
-                    isPatroling = false;
-                    RandomPatrol();
-                }
-                */
 
-                if (distanceFromPlayer > attackDistance)
-                {
-                    isChasing = true;
-                    Debug.Log("Detecto al player");
+                    if (distanceFromPlayer > attackDistance)
+                    {
+                        isChasing = true;
+                        Debug.Log("Detecto al player");
+                    }
+                    else
+                    {
+                        isHearing = false;
+                        isShooting = true;
+                        Debug.Log("Estoy atacando");
+                    }
+
+                    // Todos los enemigos con el tag "enemy" && que hagan trigger con el área de la habitación, pasan a modo chasing (isChasing = true)
+                    // Si el raycast del enemigo ya no detecta al player (on trigger exit) todos pasan a Random Patrol
+
                 }
                 else
                 {
-                    isHearing = false;
-                    isShooting = true;
-                    Debug.Log("Estoy atacando");
+                    isChasing = false;
+                    isShooting = false;
+                    Debug.Log("We dont seen");
                 }
-
-                // Todos los enemigos con el tag "enemy" && que hagan trigger con el área de la habitación, pasan a modo chasing (isChasing = true)
-                // Si el raycast del enemigo ya no detecta al player (on trigger exit) todos pasan a Random Patrol
-                
             }
-            else
-            {
-                isChasing = false;
-                isShooting = false;
-                Debug.Log("We dont seen");
-            }
+            
 
             
         }
@@ -252,6 +236,7 @@ public class EnemyTest : MonoBehaviour
         if (Vector2.Distance(transform.position, movementPoints[i].position) < 0.02f)
         {
             i++; //Aumenta el índice, cambia de objetivo hacia el que moverse.
+            Debug.Log("i " + i);
             //  ESPERA 3 SEGUNDOS ANTES DE IR AL SIGUIENTE PUNTO
             if (i == movementPoints.Length) 
             {

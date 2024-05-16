@@ -658,8 +658,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.6782999, y: 7.8429003, z: 0}
-    m_Extent: {x: 17.7505, y: 11.8422, z: 0}
+    m_Center: {x: -0.684, y: 7.8331995, z: 0}
+    m_Extent: {x: 17.7618, y: 11.8383, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -9348,8 +9348,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1711998, y: 2.79985, z: 0}
-    m_Extent: {x: 5.6141, y: 4.62815, z: 0}
+    m_Center: {x: -1.1607001, y: 2.79605, z: 0}
+    m_Extent: {x: 5.6198997, y: 4.63095, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -14822,8 +14822,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1694, y: 2.7973, z: 0}
-    m_Extent: {x: 5.6176996, y: 4.6311, z: 0}
+    m_Center: {x: -1.1628501, y: 2.7965999, z: 0}
+    m_Extent: {x: 5.62055, y: 4.6215, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -29473,8 +29473,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1643, y: 2.797, z: 0}
-    m_Extent: {x: 5.6161, y: 4.6305, z: 0}
+    m_Center: {x: -1.1645, y: 2.79895, z: 0}
+    m_Extent: {x: 5.6176004, y: 4.62685, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -33767,8 +33767,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1645, y: 2.79975, z: 0}
-    m_Extent: {x: 5.609, y: 4.62865, z: 0}
+    m_Center: {x: -1.1656499, y: 2.80085, z: 0}
+    m_Extent: {x: 5.61165, y: 4.62715, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -36963,8 +36963,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1712499, y: 2.79295, z: 0}
-    m_Extent: {x: 5.61415, y: 4.61985, z: 0}
+    m_Center: {x: -1.1562998, y: 2.7933998, z: 0}
+    m_Extent: {x: 5.6153, y: 4.6212, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -77684,8 +77684,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 32.7032, y: 1.9007502, z: 0}
-    m_Extent: {x: 21.971199, y: 13.50335, z: 0}
+    m_Center: {x: 32.7, y: 1.9041, z: 0}
+    m_Extent: {x: 21.9702, y: 13.5147, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -83938,6 +83938,17 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &1848775362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1078622911528510892, guid: 97acd41542710cb4f8012e9af26a9391, type: 3}
+  m_PrefabInstance: {fileID: 1780935303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99a6437f4907304eb9009e1dedb4a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1849350868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90784,8 +90795,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1643, y: 2.7984, z: 0}
-    m_Extent: {x: 5.6119, y: 4.6277, z: 0}
+    m_Center: {x: -1.1682999, y: 2.79935, z: 0}
+    m_Extent: {x: 5.6098003, y: 4.6199503, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -98960,7 +98971,7 @@ PrefabInstance:
     - target: {fileID: 2690982990591508906, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: chasing
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1848775362}
     - target: {fileID: 2690982990591508906, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: walkSpeed
       value: 5
