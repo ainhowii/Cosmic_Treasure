@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7157609597813601379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -88.98, y: -78.16, z: 0}
+  m_LocalPosition: {x: 0.8, y: -2, z: 0}
   m_LocalScale: {x: 0.44485164, y: 0.44485164, z: 0.44485164}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -151,7 +151,7 @@ Transform:
   - {fileID: 6185767759514145320}
   - {fileID: 8958065246958103710}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5487950331856937252
 SpriteRenderer:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: -1801447180874530132}
   direction: {x: 0, y: 0}
-  radiusAlert: 3.15
+  radiusAlert: 1.2
   fireRate: 1
   bullet: {fileID: 7265355007015163609, guid: 3dd63978d2379824e8e4189cea5d1cac, type: 3}
   bulletParent: {fileID: 2999779645531721337}
@@ -292,10 +292,9 @@ MonoBehaviour:
   isShooting: 0
   isPatroling: 0
   isHearing: 0
-  player: {fileID: 8629839868419145003, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
-  playerD: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
-  target: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
-  controller: {fileID: 2690982990591508906, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+  player: {fileID: 0}
+  target: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!195 &-1801447180874530132
 NavMeshAgent:
   m_ObjectHideFlags: 0
