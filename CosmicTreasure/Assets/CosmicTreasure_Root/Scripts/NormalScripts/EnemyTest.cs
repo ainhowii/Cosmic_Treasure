@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyTest : MonoBehaviour
 {
-    //CODEAR: ARREGLAR EL RANDOM PATROL, QUE "DISPARE" BIEN, QUE ALERTE A SUS COMPAÑEROS, QUE USE EL PATHFINDING PARA EL PATROL NORMAL
+    //CODEAR: ARREGLAR EL RANDOM PATROL, ANIMACION MUERTE PLAYER, QUE USE EL PATHFINDING PARA EL PATROL NORMAL
     // QUE ESPERE 3 SEG ENTRE PUNTO Y PUNTO EN EL PATROL, ARREGLAR LOS ESTADOS CUANDO HAY MÁS DE UN ENEMIGO
 
     EnemyDetectionSystem detection;
@@ -15,7 +15,7 @@ public class EnemyTest : MonoBehaviour
     public NavMeshAgent agent;
     public enum EnemyState { patroling, randomPatroling, chasing, attacking, hearing}
     Vector2 dir;
-    Vector2 direction;
+    public Vector2 direction;
     private Animator anim;
 
     [Header("Alert Enemies")]          //Que el enemigo alerte a sus compañeros
@@ -90,9 +90,9 @@ public class EnemyTest : MonoBehaviour
 
     private void Update()
     {
-        direction = target.transform.position - transform.position;
+        //direction = target.transform.position - transform.position;
         //HandleSpriteFlip();             //Flipear Sprites
-        GetSpriteDirection();           //Cambia de Sprites segun la direccion
+        //GetSpriteDirection();           //Cambia de Sprites segun la direccion
 
         /*
         if (!isChasing && !isShooting && !isHearing) { currentState = EnemyState.patroling; }
@@ -177,12 +177,13 @@ public class EnemyTest : MonoBehaviour
 
     private void AlertEnemies()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radiusAlert);
-        foreach (Collider col in hitColliders)
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusAlert);
+        foreach (Collider2D col in hitColliders)
         {
-            if (col.gameObject != gameObject)
+            
+            if (col.gameObject.CompareTag("Enemy"))
             {
-                isChasing = true;
+                col.GetComponent<EnemyTest>().isChasing = true;
             }
         }
     }
@@ -262,6 +263,7 @@ public class EnemyTest : MonoBehaviour
     public void ChasePlayer(Vector2 target)
     {
         isPatroling = false;
+        AlertEnemies();
         //Aquí NO puede ir isHearing = false
         LookAt(player.transform);
         agent.SetDestination(target);
@@ -358,7 +360,7 @@ public class EnemyTest : MonoBehaviour
     }
     */
 
-    void GetSpriteDirection()
+   /* void GetSpriteDirection()
     {
 
 
@@ -413,5 +415,5 @@ public class EnemyTest : MonoBehaviour
             }
         }
 
-    }
+    }*/
  }
