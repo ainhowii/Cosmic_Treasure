@@ -63,9 +63,9 @@ public class EnemyTest : MonoBehaviour
 
     public GameObject player;
 
-    public Transform playerD;
-
     public Transform target;
+
+    
 
     [SerializeField] PlayerController controller;
 
@@ -110,9 +110,9 @@ public class EnemyTest : MonoBehaviour
         if (isChasing && isHearing && isShooting) { currentState = EnemyState.attacking; }
 
 
-        EnemyStateManagement();
+        
 
-        float distanceFromPlayer = Vector2.Distance(playerD.position, transform.position);  //Distancia con el Player
+        float distanceFromPlayer = Vector2.Distance(target.position, transform.position);  //Distancia con el Player
 
         //RAYCAST
         dir = target.position - transform.position;
@@ -123,6 +123,9 @@ public class EnemyTest : MonoBehaviour
         {
             if (r.collider.CompareTag("Player"))
             {
+                Debug.Log("TE HE VISTO CABRÓN");
+                
+
                 //AlertEnemies();
                 /*
                 isDetected = true;
@@ -151,6 +154,7 @@ public class EnemyTest : MonoBehaviour
                 }
                 else
                 {
+                    isHearing = false;
                     isShooting = true;
                     Debug.Log("Estoy atacando");
                 }
@@ -168,11 +172,13 @@ public class EnemyTest : MonoBehaviour
 
             
         }
-        /*if (isHearing)
+        /*
+        if (isHearing)
         {
             detection.lastPosition = player.transform.position;
-        }*/
-        
+        }
+        */
+        EnemyStateManagement();
     }
 
     private void AlertEnemies()
