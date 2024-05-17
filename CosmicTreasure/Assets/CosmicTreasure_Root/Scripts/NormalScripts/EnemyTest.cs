@@ -66,6 +66,7 @@ public class EnemyTest : MonoBehaviour
 
     public Transform target;
 
+    [SerializeField] bool isAlerted;
     
 
     [SerializeField] PlayerController controller;
@@ -167,15 +168,19 @@ public class EnemyTest : MonoBehaviour
 
     private void AlertEnemies()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusAlert);
-        foreach (Collider2D col in hitColliders)
+        if (!isAlerted)
         {
-            
-            if (col.gameObject.CompareTag("Enemy"))
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusAlert);
+            foreach (Collider2D col in hitColliders)
             {
-                col.GetComponent<EnemyTest>().isChasing = true;
+
+                if (col.gameObject.CompareTag("Enemy"))
+                {
+                    col.GetComponent<EnemyTest>().isChasing = true;
+                }
             }
         }
+        
     }
 
     void OnDrawGizmosSelected()      //Gizmo del radio del enemigo
@@ -254,7 +259,9 @@ public class EnemyTest : MonoBehaviour
     public void ChasePlayer(Vector2 target)
     {
         isPatroling = false;
+       
         AlertEnemies();
+        isAlerted = true;
         //Aquí NO puede ir isHearing = false
         LookAt(player.transform);
         agent.SetDestination(target);

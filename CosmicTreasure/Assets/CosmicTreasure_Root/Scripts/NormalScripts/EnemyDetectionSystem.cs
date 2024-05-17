@@ -54,7 +54,7 @@ public class EnemyDetectionSystem : MonoBehaviour
         Debug.Log("Vuelvo a Patrol");      
         
         enemy.isPatroling = true;
-        enemy.isHearing = false;
+        //enemy.isHearing = false;
     }
     
 }

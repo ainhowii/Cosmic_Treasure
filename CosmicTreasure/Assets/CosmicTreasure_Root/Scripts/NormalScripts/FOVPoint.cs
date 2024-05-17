@@ -8,6 +8,8 @@ public class FOVPoint : MonoBehaviour
     Animator animeitor;
     Light2D coneVision;
 
+    public EnemyTest enemy;
+
     public float fovAngle = 90f;
     public GameObject player;
     public float range = 80;
@@ -89,8 +91,17 @@ public class FOVPoint : MonoBehaviour
             if (col.gameObject.CompareTag("Enemy"))
             {
                 col.GetComponent<EnemyTest>().isChasing = true;
+                Invoke("GoPatrol", 3);
             }
         }
+    }
+
+    private void GoPatrol()
+    {
+        enemy.isChasing = false;
+        Debug.Log("Voy a patrol amiguito");
+        enemy.isPatroling = true;
+
     }
 
     void OnDrawGizmosSelected()      //Gizmo del radio del enemigo
