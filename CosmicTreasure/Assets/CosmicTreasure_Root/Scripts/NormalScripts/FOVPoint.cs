@@ -21,7 +21,7 @@ public class FOVPoint : MonoBehaviour
 
     [Header("Alert Enemies")]          //Que el enemigo alerte a sus compañeros
     public float radiusAlert;
-
+    private bool isAlerted;
     private void Start()
     {
         //StartCoroutine(RotateAndWait());
@@ -84,20 +84,26 @@ public class FOVPoint : MonoBehaviour
 
     private void AlertEnemies()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusAlert);
-        foreach (Collider2D col in hitColliders)
+       if(!isAlerted)
         {
-
-            if (col.gameObject.CompareTag("Enemy"))
+           isAlerted = true;
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusAlert);
+            foreach (Collider2D col in hitColliders)
             {
-                col.GetComponent<EnemyTest>().isChasing = true;
-                Invoke("GoPatrol", 3);
+
+                if (col.gameObject.CompareTag("Enemy"))
+                {
+                    col.GetComponent<EnemyTest>().isChasing = true;
+                    Invoke("GoPatrol", 3);
+                }
             }
         }
+        
     }
 
     private void GoPatrol()
     {
+       //isAlerted = false;
         enemy.isChasing = false;
         Debug.Log("Voy a patrol amiguito");
         enemy.isPatroling = true;
@@ -116,6 +122,7 @@ public class FOVPoint : MonoBehaviour
         {
             Debug.Log("SEEN!");
             isSpotted = true;
+            isAlerted = false;
             AlertEnemies();
             animeitor.enabled = false;
             coneVision.color = Color.red;
