@@ -22,6 +22,7 @@ public class FOVPoint : MonoBehaviour
     [Header("Alert Enemies")]          //Que el enemigo alerte a sus compañeros
     public float radiusAlert;
     private bool isAlerted;
+    
     private void Start()
     {
         //StartCoroutine(RotateAndWait());
