@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BlueOpenSystem : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BlueOpenSystem : MonoBehaviour
     //SpriteRenderer shapeRenderer;
     [SerializeField] GameObject closeCol;
     [SerializeField] int keyToOpen;
+    [SerializeField] Light2D doorLight;
 
 
     // Start is called before the first frame update
@@ -18,12 +20,13 @@ public class BlueOpenSystem : MonoBehaviour
         anim = gameObject.GetComponentInParent<Animator>();
         col = gameObject.GetComponent<Collider2D>();
         //shapeRenderer = roof.GetComponent<SpriteRenderer>();
+        doorLight.intensity = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (GameManager.Instance.keyChain[keyToOpen] == true) { doorLight.intensity = 1; }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

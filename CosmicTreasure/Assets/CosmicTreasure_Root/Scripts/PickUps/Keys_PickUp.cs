@@ -10,6 +10,20 @@ public class Keys_PickUp : MonoBehaviour
     [SerializeField] GameObject[] keyObjectOff;
 
     [SerializeField] Sprite[] keySpritesOn;
+    [SerializeField] string[] keysAnim;
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+
+        //keysAnim[0] = new string("KeyAnim");
+            
+        
+        //keysAnim[4] = new string("PurpleKeyAnim");
+        anim.Play(keysAnim[keyOperator]);
+        Debug.Log("Anim " + keysAnim[keyOperator]);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
