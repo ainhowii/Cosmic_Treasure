@@ -4,44 +4,68 @@ using UnityEngine;
 
 public class RedZone : MonoBehaviour
 {
-    Collider2D col;
-    SpriteRenderer sprite;
-    private bool isSpawned;
-    
-    // Start is called before the first frame update
-    void Start()
+    private int i;
+    [SerializeField] private float speedMovement;
+    private float initialSpeed;
+    [SerializeField] private Transform[] movementPoints;
+    [SerializeField] private int startingPoint;
+    [SerializeField] Transform playerPos;
+    [SerializeField] bool isDetected;
+    private void Start()
     {
-        col = gameObject.GetComponent<Collider2D>();
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+        initialSpeed=speedMovement;
+        isDetected = false; 
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-       if (isSpawned == false) { StartCoroutine("RedZoneSpawn"); } 
-    }
+        if (!isDetected)
+        {
+            if (Vector2.Distance(transform.position, movementPoints[i].position) < 0.02f)
+            {
+                i++; //Aumenta el índice, cambia de objetivo hacia el que moverse.
+                Debug.Log("i " + i);
+                //  ESPERA 3 SEGUNDOS ANTES DE IR AL SIGUIENTE PUNTO
+                if (i == movementPoints.Length)
+                {
 
-    IEnumerator RedZoneSpawn()
-    {
-        isSpawned = true;
-        sprite.color = new Color(1,1,1,1);
-        yield return new WaitForSeconds(.5f);
-        sprite.color = new Color(1, 1, 1, 0);
-        yield return new WaitForSeconds(.5f);
-        sprite.color = new Color(1, 1, 1, 1);
-        yield return new WaitForSeconds(.5f);
-        sprite.color = new Color(1, 1, 1, 0);
-        yield return new WaitForSeconds(.5f);
-        sprite.color = new Color(1, 1, 1, 1);
-        col.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        col.gameObject.SetActive(false);
-        isSpawned = false;
+                    i = 0;
+                    //transform.position = movementPoints[startingPoint].position;
 
+
+                }
+            }
+
+            transform.position = Vector2.MoveTowards(transform.position, movementPoints[i].position, speedMovement * Time.deltaTime);
+        }
+
+        else if (isDetected && playerPos.position.x > movementPoints[0].position.x && playerPos.position.x < movementPoints[1].position.x)
+        {
+            transform.position = playerPos.position;
+        }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) { }
+        
+        if (collision.CompareTag("Player") && (collision.GetComponent<PlayerController>().direction.x != 0 || collision.GetComponent<PlayerController>().direction.y != 0))
+        {
+            isDetected = true;
+            Debug.Log("PlayerDetectedByLaser");
+            //speedMovement = 0;
+           
+
+            //transform.position = playerPos.position;
+           
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isDetected = false;
+        speedMovement = initialSpeed;
     }
 }
+
