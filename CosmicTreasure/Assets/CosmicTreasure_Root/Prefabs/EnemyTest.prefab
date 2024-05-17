@@ -268,7 +268,7 @@ MonoBehaviour:
   fireRate: 1
   bullet: {fileID: 7265355007015163609, guid: 3dd63978d2379824e8e4189cea5d1cac, type: 3}
   bulletParent: {fileID: 2999779645531721337}
-  attackDistance: 2
+  attackDistance: 5.5
   speedRotation: 20
   rotationModifier: 90
   fovAngle: 90
