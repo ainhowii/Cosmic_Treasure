@@ -17,7 +17,8 @@ public class FOVPoint : MonoBehaviour
 
     public bool isSpotted; //Bool que indica si te ha detectado
 
-
+    [Header("Alert Enemies")]          //Que el enemigo alerte a sus compañeros
+    public float radiusAlert;
 
     private void Start()
     {
@@ -79,12 +80,32 @@ public class FOVPoint : MonoBehaviour
 
     }
 
+    private void AlertEnemies()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusAlert);
+        foreach (Collider2D col in hitColliders)
+        {
+
+            if (col.gameObject.CompareTag("Enemy"))
+            {
+                col.GetComponent<EnemyTest>().isChasing = true;
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()      //Gizmo del radio del enemigo
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusAlert);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("SEEN!");
             isSpotted = true;
+            AlertEnemies();
             animeitor.enabled = false;
             coneVision.color = Color.red;
             //transform.rotation = Quaternion.LookRotation(transform.position,collision.transform.position);
