@@ -15,8 +15,9 @@ public class EnemyDetectionSystem : MonoBehaviour
     {
         if (player.direction != Vector2.zero)
         {
-            lastPosition = transform.position;
+            lastPosition = player.transform.position;
         }
+
          
     }
 
@@ -53,7 +54,7 @@ public class EnemyDetectionSystem : MonoBehaviour
     {
         Debug.Log("Vuelvo a Patrol");      
         
-        enemy.isPatroling = true;
+        //enemy.isPatroling = true;
         //enemy.isHearing = false;
     }
     

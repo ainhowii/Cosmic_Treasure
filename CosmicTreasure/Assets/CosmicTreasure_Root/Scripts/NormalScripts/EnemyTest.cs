@@ -226,7 +226,7 @@ public class EnemyTest : MonoBehaviour
                 break;
 
             case EnemyState.hearing:
-                ChasePlayerSound(detection.lastPosition);
+                ChasePlayerSound(player.transform.position);
                 break;
 
         }
