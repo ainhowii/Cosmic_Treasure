@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Keys_PickUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int keyOperator;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] GameObject[] keyObjectOff;
+
+    [SerializeField] Sprite[] keySpritesOn;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+        {
+            GameManager.Instance.AddKey(keyOperator);
+            keyObjectOff[keyOperator].GetComponent<Image>().sprite = keySpritesOn[keyOperator];
+            Destroy(gameObject);
+        } 
     }
 }
