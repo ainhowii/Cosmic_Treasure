@@ -41,6 +41,7 @@ public class EnemyDetectionSystem : MonoBehaviour
         {
             Debug.Log("Enemigo sale");
             EnemyTest localEnemy = collision.gameObject.GetComponent<EnemyTest>();
+            localEnemy.isHearing = false;
             localEnemy.isChasing = false;
             Invoke("PatrolAgain", 2f);
             //localEnemy.isHearing = false;     //Te oye bien, pero cuando el enemigo sale del collider, no vuelve al patroling a menos que pongas el hearing a falso, pero si lo haces, el enemigo ya no va hasta el final
@@ -51,8 +52,9 @@ public class EnemyDetectionSystem : MonoBehaviour
     void PatrolAgain()
     {
         Debug.Log("Vuelvo a Patrol");      
-        enemy.isHearing = false;
+        
         enemy.isPatroling = true;
+        enemy.isHearing = false;
     }
     
 }

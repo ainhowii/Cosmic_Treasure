@@ -121,13 +121,13 @@ public class PlayerController : MonoBehaviour
         if (isNormal && !isStealth) { currentState = PlayerState.normal; }
         if (!isNormal && isStealth) { currentState = PlayerState.stealth; }
 
-        if (Input.GetKeyDown(KeyCode.F) && isNormal)
+        if (Input.GetMouseButtonDown(1) && isNormal)//if (Input.GetKeyDown(KeyCode.F) && isNormal)
         {
             Debug.Log("Cambio a stealth");
             isNormal = false;
             isStealth = true;
         }
-        else if (Input.GetKeyDown(KeyCode.F) && !isNormal)
+        else if (Input.GetMouseButtonDown(1) && !isNormal)//else if (Input.GetKeyDown(KeyCode.F) && !isNormal)
         {
             Debug.Log("Cambio a normal");
             isNormal = true;
