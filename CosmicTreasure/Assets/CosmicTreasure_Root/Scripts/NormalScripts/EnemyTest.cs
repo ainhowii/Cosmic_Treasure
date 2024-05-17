@@ -343,6 +343,17 @@ public class EnemyTest : MonoBehaviour
 
     }
 
+
+    public void GoToPatrol()
+    {
+        Invoke("IsPatrolTrue", 3);
+    }
+
+    private void IsPatrolTrue()
+    {
+        isChasing = false;
+
+    }
     /*
     void HandleSpriteFlip()
     {

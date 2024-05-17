@@ -95,7 +95,8 @@ public class FOVPoint : MonoBehaviour
                 if (col.gameObject.CompareTag("Enemy"))
                 {
                     col.GetComponent<EnemyTest>().isChasing = true;
-                    Invoke("GoPatrol", 3);
+                    col.GetComponent <EnemyTest>().GoToPatrol();
+                   // Invoke("GoPatrol", 3);
                 }
             }
         }
