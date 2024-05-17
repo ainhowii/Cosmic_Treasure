@@ -95,13 +95,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2385500523304384137}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6eaa76c317593744a243c0add7b86d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fovAngle: 90
-  fovPoint: {fileID: 5260285513532968540}
+  player: {fileID: 0}
   range: 8
   rotationSpeed: 1
   isSpotted: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fovAngle: 90
-  fovPoint: {fileID: 0}
+  player: {fileID: 0}
   range: 80
   rotationSpeed: 0.15
   isSpotted: 0

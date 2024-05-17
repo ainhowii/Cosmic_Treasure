@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     //CODEAR: QUE LA VELOCIDAD EN Y SEA LA MITAD QUE EN X
 
+    ParticleSystem soundAreaParticle;
+    
     public Rigidbody2D body;
 
     public SpriteRenderer spriteRenderer;
@@ -102,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
         isNormal = true;
 
+        soundAreaParticle = GetComponentInChildren<ParticleSystem>();
         //currentState = PlayerState.normal;
         //enemy = GameObject.FindGameObjectWithTag("Enemy").transform;
     }
@@ -118,13 +121,13 @@ public class PlayerController : MonoBehaviour
         if (isNormal && !isStealth) { currentState = PlayerState.normal; }
         if (!isNormal && isStealth) { currentState = PlayerState.stealth; }
 
-        if (Input.GetKeyDown(KeyCode.F) && isNormal)
+        if (Input.GetMouseButtonDown(1) && isNormal)//if (Input.GetKeyDown(KeyCode.F) && isNormal)
         {
             Debug.Log("Cambio a stealth");
             isNormal = false;
             isStealth = true;
         }
-        else if (Input.GetKeyDown(KeyCode.F) && !isNormal)
+        else if (Input.GetMouseButtonDown(1) && !isNormal)//else if (Input.GetKeyDown(KeyCode.F) && !isNormal)
         {
             Debug.Log("Cambio a normal");
             isNormal = true;
@@ -312,6 +315,7 @@ public class PlayerController : MonoBehaviour
         body.velocity = direction * walkSpeed;
         HandleSpriteFlip();
         SetSprite();
+        if((body.velocity.x != 0 || body.velocity.y !=0) && soundAreaParticle.isStopped) { soundAreaParticle.Play(); }
     }
 
     private void Stealth()
@@ -320,6 +324,7 @@ public class PlayerController : MonoBehaviour
         body.velocity = direction * walkSpeedStealth;
         HandleSpriteFlipStealth();
         SetSpriteStealth();
+
     }
 
     void PlayerStateManagement()
