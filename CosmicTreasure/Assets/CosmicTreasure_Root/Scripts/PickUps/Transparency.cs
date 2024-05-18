@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Transparency : MonoBehaviour
 {
-    SpriteRenderer ren;
+    public EnemyTest enem;
     public Transform player;
     private Color newColor = new Color(1f, 1f, 1f, 0.35f);
     private Color oldColor = new Color(1f, 1f, 1f, 1f);
@@ -44,6 +44,8 @@ public class Transparency : MonoBehaviour
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         //Destroy(gameObject);
         spriteRenderer.color = newColor;
+        // QUE EL ENEMIGO NO PUEDA VER AL PLAYER
+
         //ren = GetComponent<SpriteRenderer>();
         //ren.color = new Color(1f, 1f, 1f, 0.35f);
         Invoke("Return", 5);
