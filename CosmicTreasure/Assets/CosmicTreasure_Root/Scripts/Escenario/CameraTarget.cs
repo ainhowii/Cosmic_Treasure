@@ -7,13 +7,21 @@ public class CameraTarget : MonoBehaviour
 {
 
     [SerializeField] Camera cam;
+    [SerializeField] CinemachineVirtualCamera vcam;
     [SerializeField] Transform player;
     [SerializeField] float threshold; //La cantidad de desplazamiento
+    [SerializeField] float mapThreshold; //Desplazamiento en modo mapa
+    float initialThreshold;
     
-    
-   
+    float t;
+    bool mapEnabled;
 
-    
+
+    private void Start()
+    {
+        initialThreshold = threshold; 
+    }
+
     void Update()
     {
         Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition); //Checkea pos mouse
@@ -23,5 +31,29 @@ public class CameraTarget : MonoBehaviour
         targetPos.y = Mathf.Clamp(targetPos.y, -threshold + player.position.y, threshold + player.position.y);
 
         this.transform.position = targetPos; //La pos de la camara = la pos del mouse ??
+
+        if (Input.GetKeyDown(KeyCode.G) && !mapEnabled)
+        {
+            ToMap();   
+        }
+        else if (Input.GetKeyDown(KeyCode.G) && mapEnabled)
+        {
+            FromMap();
+        }
+
+        t =  Time.time;
+    }
+
+    void ToMap()
+    {
+        vcam.m_Lens.OrthographicSize = Mathf.Lerp(12,50,t);
+        mapEnabled = true;
+        threshold = mapThreshold;
+    }
+    void FromMap()
+    {
+        vcam.m_Lens.OrthographicSize = Mathf.Lerp(50, 12, t);
+        mapEnabled = false;
+        threshold = initialThreshold;
     }
 }
