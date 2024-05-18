@@ -5,7 +5,7 @@ using UnityEngine;
 public class Transparency : MonoBehaviour
 {
     SpriteRenderer ren;
-    public GameObject player;
+    public Transform player;
 
     private bool isInvisible;
 
@@ -14,6 +14,7 @@ public class Transparency : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         isInvisible = false;
     }
 
@@ -32,21 +33,17 @@ public class Transparency : MonoBehaviour
             }
         }
         */
-    }
-
-    public void Use()
-    {
         
-        TransAction();
-            
     }
 
-    private void TransAction()  //Cambia la transparencia del player
+    public void Use()   //Cambia la transparencia del player
     {
+        Debug.Log("Destruyase");
         Destroy(gameObject);
         ren = GetComponent<SpriteRenderer>();
         ren.color = new Color(1f, 1f, 1f, 0.35f);
         Invoke("Return", 5);
+
     }
 
     private void Return()  //Vuelve a ser opaco el player
