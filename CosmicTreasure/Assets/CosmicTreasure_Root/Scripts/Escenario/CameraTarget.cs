@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 public class CameraTarget : MonoBehaviour
 {
-
+    [SerializeField] GameObject[] textObjects;
     [SerializeField] Camera cam;
     [SerializeField] CinemachineVirtualCamera vcam;
     [SerializeField] Transform player;
@@ -34,6 +34,10 @@ public class CameraTarget : MonoBehaviour
         if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value=new Vector4(1,1,1,0); }
         if (volumePost.TryGet(out PaniniProjection paniniProjection)) { paniniProjection.distance.value = 0; }
         if (volumePost.TryGet(out ChromaticAberration chromaticAberration)) { chromaticAberration.intensity.value = 0; }
+        for (int i = 0; i <= textObjects.Length-1; i++)
+        {
+            textObjects[i].SetActive(false);
+        }
     }
 
     void Update()
@@ -68,6 +72,11 @@ public class CameraTarget : MonoBehaviour
         if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value = new Vector4(.5f, .7f, .8f, 1); }
         if (volumePost.TryGet(out PaniniProjection paniniProjection)) { paniniProjection.distance.value = 1; }
         if (volumePost.TryGet(out ChromaticAberration chromaticAberration)) { chromaticAberration.intensity.value = .5f; }
+
+        for (int i = 0; i <= textObjects.Length-1; i++)
+        {
+            textObjects[i].SetActive(true);
+        }
     }
     void FromMap()
     {
@@ -79,5 +88,10 @@ public class CameraTarget : MonoBehaviour
         if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value = new Vector4(1, 1, 1, 0); }
         if (volumePost.TryGet(out PaniniProjection paniniProjection)) { paniniProjection.distance.value = 0; }
         if (volumePost.TryGet(out ChromaticAberration chromaticAberration)) { chromaticAberration.intensity.value = 0; }
+
+        for (int i = 0; i <= textObjects.Length-1; i++)
+        {
+            textObjects[i].SetActive(false);
+        }
     }
 }
