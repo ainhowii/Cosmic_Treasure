@@ -30,11 +30,10 @@ public class CameraTarget : MonoBehaviour
         initialOrtho = 12f;
         if (vcam.m_Lens.OrthographicSize != initialOrtho) { vcam.m_Lens.OrthographicSize = initialOrtho; }
         if (volumePost.TryGet(out FilmGrain filmGrainMap)) { filmGrainMap.intensity.value = 0; }
-        if (volumePost.TryGet(out ColorAdjustments colorAdjustments))
-        {
-            colorAdjustments.saturation.value = 0f;
-        }
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments)) { colorAdjustments.saturation.value = 0f; }
         if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value=new Vector4(1,1,1,0); }
+        if (volumePost.TryGet(out PaniniProjection paniniProjection)) { paniniProjection.distance.value = 0; }
+        if (volumePost.TryGet(out ChromaticAberration chromaticAberration)) { chromaticAberration.intensity.value = 0; }
     }
 
     void Update()
@@ -65,11 +64,10 @@ public class CameraTarget : MonoBehaviour
         mapEnabled = true;
         threshold = mapThreshold;
         if (volumePost.TryGet(out FilmGrain filmGrainMap)) { filmGrainMap.intensity.value = .6f; }
-        if (volumePost.TryGet(out ColorAdjustments colorAdjustments))
-        {
-            colorAdjustments.saturation.value = -100f;
-        }
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments)) { colorAdjustments.saturation.value = -100f;}
         if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value = new Vector4(.5f, .7f, .8f, 1); }
+        if (volumePost.TryGet(out PaniniProjection paniniProjection)) { paniniProjection.distance.value = 1; }
+        if (volumePost.TryGet(out ChromaticAberration chromaticAberration)) { chromaticAberration.intensity.value = .5f; }
     }
     void FromMap()
     {
@@ -77,11 +75,9 @@ public class CameraTarget : MonoBehaviour
         mapEnabled = false;
         threshold = initialThreshold;
         if (volumePost.TryGet(out FilmGrain filmGrainMap)) { filmGrainMap.intensity.value = 0; }
-        if (volumePost.TryGet(out ColorAdjustments colorAdjustments))
-        {
-            colorAdjustments.saturation.value = 0f;
-        }
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments)) { colorAdjustments.saturation.value = 0f; }
         if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value = new Vector4(1, 1, 1, 0); }
-
+        if (volumePost.TryGet(out PaniniProjection paniniProjection)) { paniniProjection.distance.value = 0; }
+        if (volumePost.TryGet(out ChromaticAberration chromaticAberration)) { chromaticAberration.intensity.value = 0; }
     }
 }
