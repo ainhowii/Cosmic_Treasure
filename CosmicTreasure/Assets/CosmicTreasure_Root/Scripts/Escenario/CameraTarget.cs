@@ -12,6 +12,7 @@ public class CameraTarget : MonoBehaviour
     [SerializeField] float threshold; //La cantidad de desplazamiento
     [SerializeField] float mapThreshold; //Desplazamiento en modo mapa
     float initialThreshold;
+    float initialOrtho;
     
     float t;
     bool mapEnabled;
@@ -19,7 +20,10 @@ public class CameraTarget : MonoBehaviour
 
     private void Start()
     {
-        initialThreshold = threshold; 
+        initialThreshold = threshold;
+        mapEnabled = false;
+        initialOrtho = 12f;
+        if (vcam.m_Lens.OrthographicSize != initialOrtho) { vcam.m_Lens.OrthographicSize = initialOrtho; }
     }
 
     void Update()
@@ -32,11 +36,11 @@ public class CameraTarget : MonoBehaviour
 
         this.transform.position = targetPos; //La pos de la camara = la pos del mouse ??
 
-        if (Input.GetKeyDown(KeyCode.G) && !mapEnabled)
+        if (Input.GetKeyDown(KeyCode.Space) && !mapEnabled)
         {
             ToMap();   
         }
-        else if (Input.GetKeyDown(KeyCode.G) && mapEnabled)
+        else if (Input.GetKeyDown(KeyCode.Space) && mapEnabled)
         {
             FromMap();
         }
@@ -46,13 +50,13 @@ public class CameraTarget : MonoBehaviour
 
     void ToMap()
     {
-        vcam.m_Lens.OrthographicSize = Mathf.Lerp(12,50,t);
+        vcam.m_Lens.OrthographicSize = Mathf.Lerp(initialOrtho,50,t);
         mapEnabled = true;
         threshold = mapThreshold;
     }
     void FromMap()
     {
-        vcam.m_Lens.OrthographicSize = Mathf.Lerp(50, 12, t);
+        vcam.m_Lens.OrthographicSize = Mathf.Lerp(50, initialOrtho, t);
         mapEnabled = false;
         threshold = initialThreshold;
     }
