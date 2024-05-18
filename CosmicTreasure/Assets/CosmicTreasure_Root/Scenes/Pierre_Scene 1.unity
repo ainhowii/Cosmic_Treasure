@@ -1593,6 +1593,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 673803498324586986, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+      propertyPath: slots.Array.data[0]
+      value: 
+      objectReference: {fileID: 681056941}
+    - target: {fileID: 673803498324586986, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+      propertyPath: slots.Array.data[1]
+      value: 
+      objectReference: {fileID: 1032225836}
+    - target: {fileID: 673803498324586986, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
+      propertyPath: slots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1597830039}
     - target: {fileID: 1087825696762927158, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
       propertyPath: enemy
       value: 
@@ -1661,10 +1673,7 @@ PrefabInstance:
     - {fileID: 4211993308950303754, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8629839868419145003, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 703790122}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
 --- !u!1 &703790109 stripped
 GameObject:
@@ -1687,23 +1696,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5681089610834566818, guid: 5f50de5446bbb454ebfed4e5952a6bac, type: 3}
   m_PrefabInstance: {fileID: 682359760}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &703790122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703790109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704cdaf7721a69842b8ee6369ae40c5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFull: 000000
-  slots:
-  - {fileID: 681056941}
-  - {fileID: 1032225836}
-  - {fileID: 1597830039}
 --- !u!1 &734713710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,7 +3956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9057356657222493877, guid: 2ff194d6dbdfe5844ae9468b56e52695, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
