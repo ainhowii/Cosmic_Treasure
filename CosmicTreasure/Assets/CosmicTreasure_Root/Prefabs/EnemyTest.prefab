@@ -352,7 +352,7 @@ MonoBehaviour:
   bullet: {fileID: 7265355007015163609, guid: 3dd63978d2379824e8e4189cea5d1cac, type: 3}
   bulletParent: {fileID: 2999779645531721337}
   attackDistance: 4
-  speedRotation: 20
+  speedRotation: 2
   rotationModifier: 90
   fovAngle: 90
   fovPoint: {fileID: 6185767759514145320}

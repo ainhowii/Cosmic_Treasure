@@ -45,7 +45,7 @@ public class CameraTarget : MonoBehaviour
             FromMap();
         }
 
-        t =  Time.time;
+        t = Time.time * .1f; ;
     }
 
     void ToMap()
