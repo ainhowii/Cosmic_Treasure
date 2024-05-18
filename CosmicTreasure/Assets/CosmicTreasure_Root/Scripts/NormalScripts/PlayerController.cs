@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
 
     float idleTime;
 
+    [Header("Camera Disable")]
+    public float radiusDesactivation;
+    public bool isInRange;
+
     //Variable para la mecanica del sonido
     private Transform enemy;
     public float lineOfSite;
@@ -98,10 +102,10 @@ public class PlayerController : MonoBehaviour
             isStealth = false;
         }
 
-        
-        
-        
-        
+
+        CameraDisable();     //FUNCIONA?????????
+
+
         /*
         float distanceFromEnemy = Vector2.Distance(enemy.position, transform.position);    //Cuando el enemigo entra en la zona del player, pasa a chasing
         if (distanceFromEnemy < lineOfSite && isNormal && direction != Vector2.zero)
@@ -109,7 +113,7 @@ public class PlayerController : MonoBehaviour
             chasing.isChasing = true;   // NO LO HACE SI HAY MAS DE UN ENEMIGO
         }
         */
-        
+
 
         //HandleSpriteFlip();
         //SetSprite();
@@ -119,6 +123,8 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radiusDesactivation);      //Gizmo para la desactivacion de camaras
     }
 
 
@@ -305,6 +311,23 @@ public class PlayerController : MonoBehaviour
 
         }
 
+
+
+    }
+
+    private void CameraDisable()
+    {
+
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radiusDesactivation);
+        foreach (Collider2D col in hitColliders)
+        {
+
+            if (col.gameObject.CompareTag("Camera"))
+            {
+                isInRange = true;
+            }
+        }
 
 
     }
