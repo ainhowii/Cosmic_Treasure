@@ -119,7 +119,7 @@ Transform:
   - {fileID: 8079592548525472719}
   - {fileID: 385254890422207924}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &38312027431300882
 SpriteRenderer:
@@ -389,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2360359746009899869}
   m_LocalRotation: {x: -0, y: -0, z: 0.0064493963, w: 0.9999792}
-  m_LocalPosition: {x: -2.37, y: 6.45, z: 0}
+  m_LocalPosition: {x: -2.54, y: 4.45, z: 0}
   m_LocalScale: {x: 1.1111112, y: 1.1111112, z: 1.1111112}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 2.3261256
+  m_PointLightOuterRadius: 4.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
