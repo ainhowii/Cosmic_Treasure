@@ -20,6 +20,7 @@ public class Transparency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKey(KeyCode.Alpha1)) //&& equippedTrans)
         {
             isInvisible = true;
@@ -30,10 +31,19 @@ public class Transparency : MonoBehaviour
                 TransAction();
             }
         }
+        */
+    }
+
+    public void Use()
+    {
+        
+        TransAction();
+            
     }
 
     private void TransAction()  //Cambia la transparencia del player
     {
+        Destroy(gameObject);
         ren = GetComponent<SpriteRenderer>();
         ren.color = new Color(1f, 1f, 1f, 0.35f);
         Invoke("Return", 5);
@@ -42,5 +52,6 @@ public class Transparency : MonoBehaviour
     private void Return()  //Vuelve a ser opaco el player
     {
         ren.color = new Color(1f, 1f, 1f, 1f);
+        Destroy(gameObject);
     }
 }
