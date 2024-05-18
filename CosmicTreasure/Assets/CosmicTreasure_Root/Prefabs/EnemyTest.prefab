@@ -277,6 +277,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  lightFOV: {fileID: 2404373081694628289}
   speedMovement: 2
   movementPoints:
   - {fileID: 0}

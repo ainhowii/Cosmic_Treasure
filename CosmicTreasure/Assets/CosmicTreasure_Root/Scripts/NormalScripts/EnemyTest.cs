@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class EnemyTest : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class EnemyTest : MonoBehaviour
     public Transform fovPoint;
     public float range = 8;
     public LayerMask playerLayer;
+    [SerializeField] Light2D lightFOV;
 
     [Header("Patrol")]
     private int i;
@@ -236,6 +238,7 @@ public class EnemyTest : MonoBehaviour
     private void Patrol()
     {
         //agent.SetDestination(movementPoints[0]);
+        lightFOV.color = Color.green;
         agent.SetDestination(transform.position);
         LookAt(movementPoints[i].transform);
         if (Vector2.Distance(transform.position, movementPoints[i].position) < 0.02f)
@@ -267,6 +270,7 @@ public class EnemyTest : MonoBehaviour
         agent.SetDestination(target);
         Debug.Log("SEEN PLAYER!");
         //Debug.DrawRay(fovPoint.position, dir, Color.red);
+        lightFOV.color = Color.red;
     }
 
     public void ChasePlayerSound(Vector2 target)
