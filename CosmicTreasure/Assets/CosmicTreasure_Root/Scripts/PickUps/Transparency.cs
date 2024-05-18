@@ -6,6 +6,8 @@ public class Transparency : MonoBehaviour
 {
     SpriteRenderer ren;
     public Transform player;
+    private Color newColor = new Color(1f, 1f, 1f, 0.35f);
+    private Color oldColor = new Color(1f, 1f, 1f, 1f);
 
     private bool isInvisible;
 
@@ -39,16 +41,20 @@ public class Transparency : MonoBehaviour
     public void Use()   //Cambia la transparencia del player
     {
         Debug.Log("Destruyase");
-        Destroy(gameObject);
-        ren = GetComponent<SpriteRenderer>();
-        ren.color = new Color(1f, 1f, 1f, 0.35f);
+        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
+        //Destroy(gameObject);
+        spriteRenderer.color = newColor;
+        //ren = GetComponent<SpriteRenderer>();
+        //ren.color = new Color(1f, 1f, 1f, 0.35f);
         Invoke("Return", 5);
 
     }
 
     private void Return()  //Vuelve a ser opaco el player
     {
-        ren.color = new Color(1f, 1f, 1f, 1f);
+        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
+        spriteRenderer.color = oldColor;
+        //ren.color = new Color(1f, 1f, 1f, 1f);
         Destroy(gameObject);
     }
 }
