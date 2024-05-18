@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99a6437f4907304eb9009e1dedb4a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumePost: {fileID: 11400000, guid: 68fefba3b094bf548852464942ef0f67, type: 2}
   agent: {fileID: -1801447180874530132}
   direction: {x: 0, y: 0}
   radiusAlert: 1.2

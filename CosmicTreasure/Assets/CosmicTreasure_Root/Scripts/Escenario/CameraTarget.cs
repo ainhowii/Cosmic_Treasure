@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class CameraTarget : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class CameraTarget : MonoBehaviour
     float t;
     bool mapEnabled;
 
+    [SerializeField] VolumeProfile volumePost;
+
+    
 
     private void Start()
     {
@@ -24,6 +29,12 @@ public class CameraTarget : MonoBehaviour
         mapEnabled = false;
         initialOrtho = 12f;
         if (vcam.m_Lens.OrthographicSize != initialOrtho) { vcam.m_Lens.OrthographicSize = initialOrtho; }
+        if (volumePost.TryGet(out FilmGrain filmGrainMap)) { filmGrainMap.intensity.value = 0; }
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments))
+        {
+            colorAdjustments.saturation.value = 0f;
+        }
+        if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value=new Vector4(1,1,1,0); }
     }
 
     void Update()
@@ -50,14 +61,27 @@ public class CameraTarget : MonoBehaviour
 
     void ToMap()
     {
-        vcam.m_Lens.OrthographicSize = Mathf.Lerp(initialOrtho,50,t);
+        vcam.m_Lens.OrthographicSize = mapThreshold;
         mapEnabled = true;
         threshold = mapThreshold;
+        if (volumePost.TryGet(out FilmGrain filmGrainMap)) { filmGrainMap.intensity.value = .6f; }
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments))
+        {
+            colorAdjustments.saturation.value = -100f;
+        }
+        if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value = new Vector4(.5f, .7f, .8f, 1); }
     }
     void FromMap()
     {
-        vcam.m_Lens.OrthographicSize = Mathf.Lerp(50, initialOrtho, t);
+        vcam.m_Lens.OrthographicSize = initialOrtho;
         mapEnabled = false;
         threshold = initialThreshold;
+        if (volumePost.TryGet(out FilmGrain filmGrainMap)) { filmGrainMap.intensity.value = 0; }
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments))
+        {
+            colorAdjustments.saturation.value = 0f;
+        }
+        if (volumePost.TryGet(out LiftGammaGain gainMap)) { gainMap.gamma.value = new Vector4(1, 1, 1, 0); }
+
     }
 }

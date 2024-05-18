@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class EnemyTest : MonoBehaviour
 {
     //CODEAR: ARREGLAR EL RANDOM PATROL, ANIMACION MUERTE PLAYER, QUE USE EL PATHFINDING PARA EL PATROL NORMAL
     // QUE ESPERE 3 SEG ENTRE PUNTO Y PUNTO EN EL PATROL, ARREGLAR LOS ESTADOS CUANDO HAY MÁS DE UN ENEMIGO
+
+    [SerializeField] VolumeProfile volumePost;
+    
 
     EnemyDetectionSystem detection;
 
@@ -76,7 +81,7 @@ public class EnemyTest : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments)) { colorAdjustments.colorFilter.value = new Color(1, 1, 1, 1); }
         currentState = EnemyState.patroling;
 
         isDetected = false;
@@ -292,6 +297,7 @@ public class EnemyTest : MonoBehaviour
         LookAt(player.transform);
         controller.walkSpeed = 0f;
         controller.walkSpeedStealth = 0f;
+        if (volumePost.TryGet(out ColorAdjustments colorAdjustments)) { colorAdjustments.colorFilter.value = new Color(1,0,0,1); }
         //Player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;          //QUE EL PLAYER PASE A ESTATICO
         //atkCD = fireRate;
         //GameObject newBullet = Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
