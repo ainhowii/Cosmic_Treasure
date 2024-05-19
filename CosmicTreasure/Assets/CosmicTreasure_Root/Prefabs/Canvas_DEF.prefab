@@ -2048,7 +2048,6 @@ GameObject:
   - component: {fileID: 7604669591982226922}
   - component: {fileID: 5861708087072108336}
   - component: {fileID: 4679867092771124943}
-  - component: {fileID: 2525144974630487313}
   m_Layer: 5
   m_Name: Slot (2)
   m_TagString: Untagged
@@ -2114,19 +2113,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2525144974630487313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6403837301454521294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf269c6a274edc41930ec8e8b4695e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i: 0
 --- !u!1 &6602877556384196356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,7 +2124,6 @@ GameObject:
   - component: {fileID: 2589707255553632007}
   - component: {fileID: 2692273022922314235}
   - component: {fileID: 9151456838472878592}
-  - component: {fileID: 6693741586377588862}
   m_Layer: 5
   m_Name: Slot (1)
   m_TagString: Untagged
@@ -2204,19 +2189,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6693741586377588862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6602877556384196356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf269c6a274edc41930ec8e8b4695e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i: 0
 --- !u!1 &6917581921382988908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2553,6 @@ GameObject:
   - component: {fileID: 2123831671830817486}
   - component: {fileID: 3459945241311366891}
   - component: {fileID: 7670161791363600019}
-  - component: {fileID: 8220765271479456009}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -2647,19 +2618,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8220765271479456009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8603987964267899518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf269c6a274edc41930ec8e8b4695e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i: 0
 --- !u!1 &8908347865629152077
 GameObject:
   m_ObjectHideFlags: 0
